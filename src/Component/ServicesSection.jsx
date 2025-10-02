@@ -56,6 +56,7 @@ const ServicesSection = () => {
                             <Card
                                 sx={{
                                     width: "100%",
+                                    height: "320px",
                                     background: '#2A6BE5',
                                     color: 'white',
                                     borderRadius: "15px",
@@ -91,11 +92,7 @@ const ServicesSection = () => {
                                             marginTop: "5px"
                                         }}
                                     >
-                                        Lorem ipsum dolor sit amet, do
-                                        <br />
-                                        consectetur adipiscing elit,
-                                        <br />
-                                        Fuscefacilisis libe.
+                                        Discover your perfect home with expert support,carefully matched to your lifestyle and budget needs.
                                     </Typography>
 
                                     {/* Button */}
@@ -123,6 +120,7 @@ const ServicesSection = () => {
                             <Card
                                 sx={{
                                     width: "100%",
+                                    height: "320px",
                                     background: '#2A6BE5',
                                     color: 'white',
                                     borderRadius: "15px",
@@ -158,11 +156,7 @@ const ServicesSection = () => {
                                             marginTop: "5px"
                                         }}
                                     >
-                                        Lorem ipsum dolor sit amet, do
-                                        <br />
-                                        consectetur adipiscing elit,
-                                        <br />
-                                        Fuscefacilisis libe.
+                                        Choose from reliable rental options and settle into a place that truly feels like  your own home.
                                     </Typography>
 
                                     {/* Button */}
@@ -190,6 +184,7 @@ const ServicesSection = () => {
                             <Card
                                 sx={{
                                     width: "100%",
+                                    height: "320px",
                                     background: '#2A6BE5',
                                     color: 'white',
                                     borderRadius: "15px",
@@ -210,6 +205,7 @@ const ServicesSection = () => {
                                             fontWeight: 600,
                                             fontSize: "30px",
                                             color: "#FFFFFF",
+
                                         }}
                                     >
                                         Sell a Home
@@ -225,11 +221,7 @@ const ServicesSection = () => {
                                             marginTop: "5px"
                                         }}
                                     >
-                                        Lorem ipsum dolor sit amet, do
-                                        <br />
-                                        consectetur adipiscing elit,
-                                        <br />
-                                        Fuscefacilisis libe.
+                                        List your property with us to gain wide exposure and achieve the best value in today’s market.
                                     </Typography>
 
                                     {/* Button */}
@@ -257,6 +249,7 @@ const ServicesSection = () => {
                             <Card
                                 sx={{
                                     width: "100%",
+                                    height: "320px",
                                     background: '#2A6BE5',
                                     color: 'white',
                                     borderRadius: "15px",
@@ -292,11 +285,7 @@ const ServicesSection = () => {
                                             marginTop: "5px"
                                         }}
                                     >
-                                        Lorem ipsum dolor sit amet, do
-                                        <br />
-                                        consectetur adipiscing elit,
-                                        <br />
-                                        Fuscefacilisis libe.
+                                        Explore profitable of the real estate is opportunities designed to grow  wealth  secure your future.
                                     </Typography>
 
                                     {/* Button */}

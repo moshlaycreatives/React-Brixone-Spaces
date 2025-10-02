@@ -158,8 +158,7 @@ function QuoteBox({ side = "right" }) {
                     fontSize: "18px",
                     color: "#676767",
                 }}>
-                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure
-                    dolor in reprehenderit in voluptate.”
+                    "Brixone Spaces made buying my first home so easy. They understood exactly what I needed and guided me through every step with patience and care.."
                 </Typography>
 
                 <Stack direction="row" spacing={1.5} alignItems="center">
@@ -169,10 +168,10 @@ function QuoteBox({ side = "right" }) {
                     />
                     <Box>
                         <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-                            Travis Liam
+                            Sophia Reed
                         </Typography>
                         <Typography variant="caption" color="text.secondary">
-                            Property Owner
+                            Home owner
                         </Typography>
                     </Box>
                 </Stack>
@@ -198,7 +197,7 @@ function ImageCard({ img, boxSide = "right" }) {
                 position: "relative",
                 borderRadius: 3,
                 overflow: "visible",
-                height: 260,
+                height: 360,
                 width: "100%",
             }}
         >
@@ -206,7 +205,7 @@ function ImageCard({ img, boxSide = "right" }) {
                 component="img"
                 image={img}
                 alt=""
-                sx={{ width: "100%", height: "100%", objectFit: "cover" }}
+                sx={{ width: "100%", height: "360px", objectFit: "cover", borderRadius: "15px" }}
             />
             <QuoteBox side={boxSide} />
         </Card>
@@ -217,7 +216,7 @@ export default function ClientReview() {
     return (
         <>
 
-            <Box sx={{  padding: { xs: "0px 20px", md: "0px 50px" }, backgroundColor: "#E9E9E9",  }}>
+            <Box sx={{ padding: { xs: "0px 20px", md: "0px 75px" }, backgroundColor: "#E9E9E9", }}>
                 <Box
                     sx={{
                         display: "inline-block",
@@ -248,7 +247,7 @@ export default function ClientReview() {
                                     fontSize: { xs: "25px", md: "50px" },
                                     color: "#202020",
                                     lineHeight: "100%",
-                                  
+
                                 }}>
                                     What Our Customers Says
                                 </Typography>
@@ -259,7 +258,7 @@ export default function ClientReview() {
                                 display="flex"
                                 gap={2}
                                 justifyContent={{ xs: 'center', md: 'flex-end' }}
-                                
+
                             >
                                 <Button
                                     variant="outlined"
@@ -296,7 +295,7 @@ export default function ClientReview() {
 
             </Box>
 
-            <Box sx={{ bgcolor: "#E9E9E9", py: { xs: 4, md: 6 }, overflow: "hidden" }}>
+            <Box sx={{ bgcolor: "#E9E9E9", py: { xs: 4, md: 1 }, overflow: "hidden", padding: { xs: "40px 20px", md: "40px 0px" } }}>
                 <Grid
                     container
                     justifyContent="center"
@@ -310,6 +309,7 @@ export default function ClientReview() {
                         <ImageCard
                             img="/image/client1.png"
                             boxSide="right"
+
                         />
                     </Grid>
                     <Grid item size={{ xs: 12, md: 5 }} sx={{ display: { xs: "none", md: "block" } }} >

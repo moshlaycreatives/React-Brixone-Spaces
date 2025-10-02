@@ -8,7 +8,7 @@ import SendIcon from '@mui/icons-material/Send';
 const Footer = () => {
     return (
         <>
-            <Box sx={{ px: { xs: "20px", md: "50px" }, backgroundColor: "#2A6BE5", py: "40px", borderRadius: "30px 30px 0px 0px" }}>
+            <Box sx={{ px: { xs: "20px", md: "75px" }, backgroundColor: "#2A6BE5", py: "40px", borderRadius: "30px 30px 0px 0px" }}>
 
                 <Box>
                     <Grid container spacing={2}>
@@ -24,8 +24,7 @@ const Footer = () => {
                                     color: "#FFFFFF",
                                     marginTop: "30px"
                                 }}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a facilisis libe ro, in cursus magna. Vestibulum eleifend felis ac ultricies facilisis. Vivamus
-                                    augue risus, elementum vel laoreet a, molestie congue sem.
+                                    We're here to guide you through each stage of the real estate experience. From selling or buying to investing and renting, our team will ensure a smooth experience by providing reliable guidance and individualized solutions.
                                 </Typography>
                                 <Box>
                                     <Typography style={{
@@ -56,6 +55,10 @@ const Footer = () => {
                                                 flex: 1,
                                                 color: 'white',
                                                 fontFamily: 'Outfit',
+                                                '& input::placeholder': {
+                                                    color: '#FFFFFF',   
+                                                    opacity: 1,
+                                                },
                                             }}
                                             inputProps={{ 'aria-label': 'your email address' }}
                                         />
@@ -85,7 +88,7 @@ const Footer = () => {
                                     fontWeight: 500,
                                     fontSize: "25px",
                                     color: "#FFFFFF",
-                                    marginTop:{xs:"0px", md:"50px"}
+                                    marginTop: { xs: "0px", md: "65px" }
                                 }}>Quick Links</Typography>
                                 <List dense>
                                     {['Home', 'About Us', 'Services', 'Invest', 'Blog', 'Contact Us'].map((item) => (
@@ -108,7 +111,7 @@ const Footer = () => {
                                     fontWeight: 500,
                                     fontSize: "25px",
                                     color: "#FFFFFF",
-                                      marginTop:{xs:"0px", md:"50px"}
+                                    marginTop: { xs: "0px", md: "65px" }
                                 }}>Get in Touch</Typography>
                             </Box>
                             <Box sx={{ display: "flex", gap: "20px", mt: "10px" }}>
@@ -153,7 +156,7 @@ const Footer = () => {
                                         fontSize: "18px",
                                         color: "#FFFFFF",
                                     }}>
-                                        +91 (309) 2087119
+                                        +919227000989
                                     </Typography>
                                 </Box>
                             </Box>

@@ -123,14 +123,14 @@ const AboutSlider = () => {
     };
 
     return (
-        <Box display="flex" alignItems="center" justifyContent="center" sx={{ marginTop: { xs: "20px", md: "70px" }, px: 2 }}>
+        <Box display="flex" alignItems="center" justifyContent="center" sx={{ marginTop: { xs: "20px", md: "30px" }, px: 2 }}>
             <Stack direction="row" alignItems="center" sx={{ position: 'relative' }}>
                 
                 {/* First Image - Largest */}
                 <Box
                     sx={{
-                        width: { xs: 180, sm: 220, md: 250 },
-                        height: { xs: 220, sm: 280, md: 320 },
+                        width: { xs: 180, sm: 220, md: 280 },
+                        height: { xs: 220, sm: 280, md: 480 },
                         borderRadius: 3,
                         boxShadow: 3,
                         zIndex: 3,
@@ -148,7 +148,7 @@ const AboutSlider = () => {
                 <Box
                     sx={{
                         width: { xs: 140, sm: 160, md: 180 },
-                        height: { xs: 180, sm: 240, md: 280 },
+                        height: { xs: 180, sm: 240, md: 400 },
                         borderRadius: 3,
                         boxShadow: 2,
                         zIndex: 2,
@@ -171,7 +171,7 @@ const AboutSlider = () => {
                 <Box
                     sx={{
                         width: { xs: 100, sm: 120, md: 130 },
-                        height: { xs: 140, sm: 200, md: 250 },
+                        height: { xs: 140, sm: 200, md: 350 },
                         borderRadius: 3,
                         boxShadow: 1,
                         zIndex: 1,

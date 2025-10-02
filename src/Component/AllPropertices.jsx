@@ -75,7 +75,7 @@ const AllPropertices = () => {
                                 sx={{
                                     fontFamily: "Afacad",
                                     fontWeight: 600,
-                                     fontSize: { xs: "25px", md: "50px" },
+                                    fontSize: { xs: "25px", md: "50px" },
                                     color: "#202020",
                                     lineHeight: "100%",
                                 }}>
@@ -84,7 +84,7 @@ const AllPropertices = () => {
                             </Typography>
                         </Box>
                     </Grid>
-                    <Grid size={{ xs: 12, md: 2 }}>
+                    <Grid size={{ xs: 12, md: 2 }} sx={{ display: { xs: "none", md: "block" } }}>
                         <Button style={{
                             fontFamily: "Afacad",
                             fontWeight: 400,
@@ -113,10 +113,10 @@ const AllPropertices = () => {
                         return (
                             <Grid item size={{ xs: 12, sm: 6, md: 3 }} key={index} mt={2}>
                                 <Box sx={{ width: "100%" }}>
-                                    <img src={item.Image} style={{ width: "100%" }} />
-                                    <Box sx={{ display: "flex", alignItems: "center" , justifyContent:"center", }}>
+                                    <img src={item.Image} style={{ width: "100%", height: "285px" }} />
+                                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", }}>
                                         <Box sx={{ display: "flex", alignItems: "center" }}>
-                                            <img src="/image/Bed.png"  />
+                                            <img src="/image/Bed.png" />
                                             <Typography sx={{
                                                 fontFamily: "Afacad",
                                                 fontWeight: 400,
@@ -193,7 +193,7 @@ const AllPropertices = () => {
                                             </Typography>
                                         </Typography>
                                         <Box sx={{ display: 'flex', gap: "10px" }}>
-                                            <img src="/image/arrow.png" style={{width:"80%", height:"80%"}} />
+                                            <img src="/image/arrow.png" style={{ width: "80%", height: "80%" }} />
                                         </Box>
                                     </Box>
                                 </Box>
@@ -203,6 +203,29 @@ const AllPropertices = () => {
                 }
             </Grid>
 
+
+
+            <Box sx={{ display: { xs: "block", md: "none" } }}>
+                <Grid container spacing={2} mt={5} >
+                    <Grid size={{ xs: 12, md: 2 }}>
+                        <Button style={{
+                            fontFamily: "Afacad",
+                            fontWeight: 400,
+                            fontSize: "18px",
+                            color: "#FFFFFF",
+                            width: "100%",
+                            height: "48px",
+                            backgroundColor: "#2A6BE5",
+                            textTransform: "none",
+                            borderRadius: "6px"
+                        }}
+                            variant="outlined"
+                        >View all Listing</Button>
+
+                    </Grid>
+
+                </Grid>
+            </Box>
 
 
 

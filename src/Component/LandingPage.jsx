@@ -39,14 +39,14 @@ const LandingPage = () => {
 
             {/* HERO SECTION */}
             <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
-                <Box sx={{ padding: { xs: "0px 20px", md: "0px 50px" } }}>
+                <Box sx={{ padding: { xs: "0px 20px", md: "0px 75px" } }}>
                     <Box sx={{
                         backgroundImage: "linear-gradient(180deg, rgba(0, 0, 0, 0.43) 45.23%, rgba(0, 0, 0, 0) 99.79%), url(/image/landingimage.png)",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
                         width: "100%",
-                        height: "580px",
+                        height: "680px",
                         position: "relative",
                         borderRadius: "30px"
                     }}>
@@ -61,17 +61,28 @@ const LandingPage = () => {
                             }}>
                                 Elevate Lifestyle Luxury <br />
                                 Meets Comfort
+
                             </Typography>
 
                             <Typography sx={{
                                 fontFamily: "Afacad",
                                 fontWeight: 400,
-                                fontSize: { xs: "14px", md: "20px" },
+                                fontSize: { xs: "10px", md: "20px" },
                                 color: "#FFFFFF",
-                                mt: 2
+                                mt: 2,
+                                display: { xs: "none", md: "block" }
                             }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis libero diam, dapibus eget <br />
-                                euismod ac, scelerisque in lectus. Morbi sodales lacus. Lorem ipsum dolor sit amet, <br /> consectetur adipiscing elit.
+                                Explore a carefully curated selection of luxurious properties and investment <br /> opportunities that blend contemporary architecture with the ultimate in <br /> convenience. With Brixone Spaces, we help you locate properties that fit <br />your needs, whether you're looking to rent, purchase, sell, or invest.
+                            </Typography>
+                            <Typography sx={{
+                                fontFamily: "Afacad",
+                                fontWeight: 400,
+                                fontSize: { xs: "13px", md: "20px" },
+                                color: "#FFFFFF",
+                                mt: 2,
+                                display: { xs: "block", md: "none" }
+                            }}>
+                                Explore a carefully curated selection of luxurious properties and investment  opportunities that blend contemporary architecture with the ultimate in  convenience. With Brixone Spaces, we help you locate properties that fit your needs, whether you're looking to rent, purchase, sell, or invest.
                             </Typography>
 
                             <Button sx={{
@@ -94,7 +105,7 @@ const LandingPage = () => {
                         <Box
                             sx={{
                                 position: 'absolute',
-                                bottom: { xs: "-320px", md: "-100px" },
+                                bottom: { xs: "-140px", md: "-100px" },
                                 left: '50%',
                                 transform: 'translateX(-50%)',
                                 width: '80%',
@@ -103,6 +114,7 @@ const LandingPage = () => {
                             <Tabs value={tab} onChange={handleTabChange} centered>
                                 <Tab label="For Rent" sx={{
                                     backgroundColor: "#FFFFFF",
+                                    fontFamily: "Afacad",
                                     width: "120px",
                                     color: "#202020",
                                     textTransform: "none",
@@ -110,6 +122,7 @@ const LandingPage = () => {
                                     marginRight: "10px"
                                 }} />
                                 <Tab label="For Sell" sx={{
+                                    fontFamily: "Afacad",
                                     backgroundColor: '#5c5c5ca6',
                                     color: "#FFFFFF",
                                     textTransform: "none",
@@ -135,11 +148,31 @@ const LandingPage = () => {
                                             value={propertyType}
                                             onChange={(e) => setPropertyType(e.target.value)}
                                             fullWidth
-                                            sx={{ mt: 2 }}
-                                            
+                                            size="small"
+                                            SelectProps={{
+                                                displayEmpty: true, // 👈 shows placeholder even if value=""
+                                            }}
+                                            sx={{
+                                                "& .MuiOutlinedInput-root": {
+                                                    borderRadius: "6px",
+                                                    mt: "10px"
+
+                                                    // "& fieldset": {
+                                                    //     border: "1px solid var(--Text-Color, #676767)"
+                                                    // },
+                                                    // "&:hover fieldset": {
+                                                    //     border: "1px solid var(--Text-Color, #676767)"
+                                                    // },
+                                                    // "&.Mui-focused fieldset": {
+                                                    //     border: "1px solid var(--Text-Color, #676767)"
+                                                    // },
+                                                },
+                                            }}
+
                                         >
-                                            <MenuItem value="">Select type</MenuItem>
-                                            {/* Add actual types here */}
+                                            <MenuItem value="" disabled>
+                                                Select type
+                                            </MenuItem>
                                         </TextField>
                                     </Grid>
 
@@ -157,7 +190,27 @@ const LandingPage = () => {
                                             value={bedrooms}
                                             onChange={(e) => setBedrooms(e.target.value)}
                                             fullWidth
-                                            sx={{ mt: 2 }}
+
+                                            size="small"
+                                            SelectProps={{
+                                                displayEmpty: true, // 👈 shows placeholder even if value=""
+                                            }}
+                                            sx={{
+                                                "& .MuiOutlinedInput-root": {
+                                                    borderRadius: "6px",
+                                                    mt: "10px"
+
+                                                    // "& fieldset": {
+                                                    //     border: "1px solid var(--Text-Color, #676767)"
+                                                    // },
+                                                    // "&:hover fieldset": {
+                                                    //     border: "1px solid var(--Text-Color, #676767)"
+                                                    // },
+                                                    // "&.Mui-focused fieldset": {
+                                                    //     border: "1px solid var(--Text-Color, #676767)"
+                                                    // },
+                                                },
+                                            }}
                                         >
                                             <MenuItem value="">Select budget</MenuItem>
                                             <MenuItem value="0-1000">$0 - $1,000</MenuItem>
@@ -180,12 +233,30 @@ const LandingPage = () => {
                                             value={budget}
                                             onChange={(e) => setBudget(e.target.value)}
                                             fullWidth
-                                            sx={{ mt: 2 }}
+                                           
+                                            size="small"
+                                            SelectProps={{
+                                                displayEmpty: true, // 👈 shows placeholder even if value=""
+                                            }}
+                                            sx={{
+                                                "& .MuiOutlinedInput-root": {
+                                                    borderRadius: "6px",
+                                                    mt: "10px"
+
+                                                    // "& fieldset": {
+                                                    //     border: "1px solid var(--Text-Color, #676767)"
+                                                    // },
+                                                    // "&:hover fieldset": {
+                                                    //     border: "1px solid var(--Text-Color, #676767)"
+                                                    // },
+                                                    // "&.Mui-focused fieldset": {
+                                                    //     border: "1px solid var(--Text-Color, #676767)"
+                                                    // },
+                                                },
+                                            }}
                                         >
-                                            <MenuItem value="">Select budget</MenuItem>
-                                            <MenuItem value="0-1000">$0 - $1,000</MenuItem>
-                                            <MenuItem value="1000-2000">$1,000 - $2,000</MenuItem>
-                                            <MenuItem value="2000+">$2,000+</MenuItem>
+                                            <MenuItem value="">Select Filter</MenuItem>
+
                                         </TextField>
                                     </Grid>
 
@@ -198,9 +269,9 @@ const LandingPage = () => {
                                             textTransform: "none",
                                             backgroundColor: "#2A6BE5",
                                             width: "100%",
-                                            height: "50px",
+                                            height: "40px",
                                             borderRadius: "10px",
-                                            mt: 5
+                                            mt: { xs: 1, md: 4.5 }
                                         }}>
                                             Find Property
                                         </Button>
@@ -210,26 +281,27 @@ const LandingPage = () => {
                         </Box>
                     </Box>
                 </Box>
-            </Box>
+            </Box >
 
 
             {/* All component import */}
 
-            <Box>
+            < Box >
                 {/* ABOUT SECTION STARTS CLEANLY BELOW */}
-                <Box sx={{ mt: { xs: "350px", md: "150px" }, padding: { xs: "0px 20px", md: "0px 50px" } }}>
+                < Box sx={{ mt: { xs: "200px", md: "150px" }, padding: { xs: "0px 20px", md: "0px 75px" } }
+                }>
                     <AboutSection />
-                </Box>
+                </Box >
                 <Box sx={{ mt: "50px" }}>
                     <FeaturedPropertices />
                 </Box>
 
 
                 {/* Our Services */}
-                <Box sx={{ mt: "50px", padding: { xs: "0px 20px", md: "0px 50px" } }}>
+                <Box sx={{ mt: "50px", padding: { xs: "0px 20px", md: "0px 75px" } }}>
                     <ServicesSection />
                 </Box>
-                <Box sx={{ mt: "50px", padding: { xs: "0px 20px", md: "0px 50px" } }}>
+                <Box sx={{ mt: "50px", padding: { xs: "0px 20px", md: "0px 75px" } }}>
                     <AllPropertices />
                 </Box>
                 <Box sx={{ mt: "50px", }}>
@@ -244,14 +316,14 @@ const LandingPage = () => {
                 <Box>
                     <InsagramSlider />
                 </Box>
-                <Box sx={{ mt: "50px", px: { xs: "0px", md: "50px" } }}>
+                <Box sx={{ mt: "50px", px: { xs: "0px", md: "75px" } }}>
                     <Footer />
                 </Box>
                 <Box>
                     <ImageBox />
                 </Box>
 
-            </Box>
+            </Box >
 
 
         </>

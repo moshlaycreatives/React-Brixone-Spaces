@@ -18,8 +18,8 @@ const ImageBox = () => {
             }}>
 
 
-                <Box sx={{ padding: { xs: "0px 0px 50px 0px", md: "0px 50px 50px 50px" } }}>
-                    <Box sx={{ px: { xs: "20px", md: "50px" }, py: "20px", backgroundColor: "#202020", borderRadius: "0px 0px 30px 30px" }}>
+                <Box sx={{ padding: { xs: "0px 0px 50px 0px", md: "0px 75px 75px 75px" } }}>
+                    <Box sx={{ px: { xs: "20px", md: "75px" }, py: "20px", backgroundColor: "#202020", borderRadius: "0px 0px 30px 30px" }}>
                         <Grid container spacing={2}>
                             <Grid size={{ xs: 12, md: 10 }}>
                                 <Typography sx={{
@@ -37,7 +37,6 @@ const ImageBox = () => {
                                     <img src="/image/facebookicon.png" />
                                     <img src="/image/insta.png" />
                                     <img src="/image/twittericon.png" />
-                                    <img src="/image/linkedicon.png" />
                                 </Box>
                             </Grid>
 

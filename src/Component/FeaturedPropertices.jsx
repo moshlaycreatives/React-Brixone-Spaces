@@ -32,7 +32,7 @@ const FeaturedPropertices = () => {
     return (
         <>
 
-            <Box sx={{ px: { xs: "20px", md: "50px" }, backgroundColor: "#202020", py: "30px" }}>
+            <Box sx={{ px: { xs: "20px", md: "75px" }, backgroundColor: "#202020", py: "30px" }}>
                 <Box
                     sx={{
                         display: "inline-block",
@@ -71,18 +71,29 @@ const FeaturedPropertices = () => {
                                 <Typography sx={{
                                     fontFamily: "Afacad",
                                     fontWeight: 400,
-                                    fontSize: { xs: "11px", md: "18px" },
+                                    fontSize: { xs: "13px", md: "18px" },
                                     color: "#FFFFFF",
                                     lineHeight: "20px",
-                                    marginTop: "20px"
+                                    marginTop: "20px",
+                                    display:{xs:"none", md:"block"}
                                 }}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a facilisis libe <br />
-                                    ro, in cursus magna. Vestibulum eleifend felis ac ultricies facilisis. Vivamus <br />
-                                    augue risus, elementum vel laoreet a, molestie congue sem.
+                                   Discover a carefully selected range luxury properties, including apartments, <br /> homes  and commercial spaces that are designed to your needs for <br /> investment and lifestyle. We are Brixone Spaces, and we can <br /> connect to properties that blend contemporary design, <br /> prime areas, and value for the long term.
+                                </Typography>
+                                <Typography sx={{
+                                    fontFamily: "Afacad",
+                                    fontWeight: 400,
+                                    fontSize: { xs: "13px", md: "18px" },
+                                    color: "#FFFFFF",
+                                    lineHeight: "20px",
+                                    marginTop: "20px",
+                                         display:{xs:"block", md:"none"}
+                                }}>
+                                 
+                                   Discover a carefully selected range of luxury properties, including apartments, homes and commercial spaces that are designed to your needs for investment and lifestyle.  We are Brixone Spaces, and we can connect to properties that blend contemporary design, prime areas, and value for the long term.
                                 </Typography>
                             </Box>
                         </Grid>
-                        <Grid size={{ xs: 12, md: 2 }}>
+                        <Grid size={{ xs: 12, md: 2 }} sx={{display:{xs:"none", md:"block"}}}>
                             <Button sx={{
                                 fontFamily: "Afacad",
                                 fontWeight: 400,
@@ -109,7 +120,7 @@ const FeaturedPropertices = () => {
                             return (
                                 <Grid item size={{ xs: 12, sm: 6, md: 3 }} key={index} mt={2}>
                                     <Box sx={{ width: "100%" }}>
-                                        <img src={item.Image} style={{ width: "100%" }} />
+                                        <img src={item.Image} style={{ width: "100%" , height:"285px" }} />
                                         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                                             <Box sx={{ display: "flex", alignItems: "center" }}>
                                                 <img src="/image/WBed.png" />
@@ -161,7 +172,7 @@ const FeaturedPropertices = () => {
                                                 color: "#FFFFFF",
                                                 marginTop: "8px"
                                             }}>
-                                                Lorem ipsum dolor
+                                                Crestview Luxe Homes
                                             </Typography>
                                         </Box>
                                         <Box sx={{ display: 'flex', flexFlow: "row", justifyContent: 'space-between', width: '100%', mt: "10px" }}>
@@ -239,6 +250,27 @@ const FeaturedPropertices = () => {
 
 
 
+     <Box sx={{ display: { xs: "block", md: "none" } }}>
+                <Grid container spacing={2} mt={5} >
+                    <Grid size={{ xs: 12, md: 2 }}>
+                        <Button style={{
+                            fontFamily: "Afacad",
+                            fontWeight: 400,
+                            fontSize: "18px",
+                            color: "#FFFFFF",
+                            width: "100%",
+                            height: "48px",
+                            backgroundColor: "#2A6BE5",
+                            textTransform: "none",
+                            borderRadius: "6px"
+                        }}
+                            variant="outlined"
+                        >View all Listing</Button>
+
+                    </Grid>
+
+                </Grid>
+            </Box>
 
 
 

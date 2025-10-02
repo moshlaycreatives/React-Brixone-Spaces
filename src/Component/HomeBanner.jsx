@@ -29,7 +29,7 @@ const HomeBanner = () => {
                         size={{ xs: 6, sm: 6, md: 2.4 }}
                         sx={{
                             mt: { xs: "20px", md: "70px" },
-                            mb: { xs: "10px", md: "70px" },
+                            mb: { xs: "20px", md: "70px" },
                         }}
 
                     >

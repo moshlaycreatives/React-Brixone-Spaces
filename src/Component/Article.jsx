@@ -32,7 +32,7 @@ const Article = () => {
     return (
         <>
 
-            <Box sx={{ px: {xs:"20px", md:"50px"}, backgroundColor: "#202020", py: "30px" }}>
+            <Box sx={{ px: { xs: "20px", md: "75px" }, backgroundColor: "#202020", py: "30px" , }}>
                 <Box
                     sx={{
                         display: "inline-block",
@@ -112,7 +112,7 @@ const Article = () => {
                             return (
                                 <Grid item size={{ xs: 12, sm: 6, md: 3 }} key={index} mt={2}>
                                     <Box sx={{ width: "100%" }}>
-                                        <img src={item.Image} style={{ width: "100%" }} />
+                                        <img src={item.Image} style={{ width: "100%"  , height:"285px"}} />
 
                                         <Box sx={{ display: 'flex', flexFlow: "row", justifyContent: 'space-between', width: '100%', mt: "10px" }}>
                                             <Typography
@@ -148,8 +148,7 @@ const Article = () => {
                                                 color: "#FFFFFF",
                                                 marginTop: "8px"
                                             }}>
-                                                Lorem ipsum dolor sit ame
-                                                Duis aute irure dolor
+                                                Crestview Luxe Homes
                                             </Typography>
                                         </Box>
 

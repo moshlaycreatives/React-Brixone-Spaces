@@ -24,7 +24,7 @@ export default function InsagramSlider({
     return (
         <>
 
-            <Box sx={{ px: { xs: "20px", md: "50px" }, backgroundColor: "#FFFFFF", py: "30px" }}>
+            <Box sx={{ px: { xs: "20px", md: "75px" }, backgroundColor: "#FFFFFF", py: "30px" }}>
                 <Box
                     sx={{
                         display: "inline-block",
