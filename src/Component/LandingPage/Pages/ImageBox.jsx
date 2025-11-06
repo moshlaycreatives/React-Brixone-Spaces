@@ -1,5 +1,5 @@
 import { Box, Typography, Grid } from "@mui/material";
-
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 
 const ImageBox = () => {
     return (
@@ -33,11 +33,23 @@ const ImageBox = () => {
                                 </Typography>
                             </Grid>
                             <Grid size={{ xs: 12, md: 2 }}>
-                                <Box sx={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+                                {/* <Box sx={{ display: "flex", gap: "10px", justifyContent: "center" }}>
                                     <img src="/image/facebookicon.png" />
                                     <img src="/image/insta.png" />
                                     <img src="/image/twittericon.png" />
+                                </Box> */}
+                                <Box sx={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+                                    <a href="https://www.facebook.com/profile.php?id=61581132009380" target="_blank" rel="noopener noreferrer">
+                                        <img src="/image/facebookicon.png" alt="Facebook" />
+                                    </a>
+                                    <a href="https://www.instagram.com/brixonespaces/" target="_blank" rel="noopener noreferrer">
+                                        <img src="/image/insta.png" alt="Instagram" />
+                                    </a>
+                                    <a>
+                                        <img src="/image/twittericon.png" alt="Twitter" />
+                                    </a>
                                 </Box>
+
                             </Grid>
 
                         </Grid>

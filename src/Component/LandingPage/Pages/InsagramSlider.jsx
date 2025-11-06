@@ -28,7 +28,7 @@ export default function InsagramSlider({
                 <Box
                     sx={{
                         display: "inline-block",
-                        mt: 5,
+                        mt: 2,
                         borderRadius: 1,
                     }}
                 >
@@ -90,6 +90,7 @@ export default function InsagramSlider({
                             "&:hover": { animationPlayState: "paused" },
                         }}
                     >
+                      
                         {trackImages.map((src, i) => (
                             <Card
                                 elevation={0}
@@ -104,51 +105,59 @@ export default function InsagramSlider({
                                     boxShadow: "0 4px 14px rgba(0,0,0,0.12)",
                                 }}
                             >
-                                <CardActionArea
-                                    sx={{
-                                        width: "100%",
-                                        height: "100%",
-                                        position: "relative",
-                                    }}
+                                <a
+                                    href="https://www.instagram.com/brixonespaces/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ display: "block", width: "100%", height: "100%" }}
                                 >
-                                    <Box
-                                        component="img"
-                                        src={src}
-                                        alt={`home-${i}`}
+                                    <CardActionArea
                                         sx={{
                                             width: "100%",
                                             height: "100%",
-                                            objectFit: "cover",
-                                            filter: "saturate(95%)",
-                                        }}
-                                    />
-                                    <Box
-                                        sx={{
-                                            position: "absolute",
-                                            top: 8,
-                                            right: 8,
-                                            width: 28,
-                                            height: 28,
-                                            borderRadius: "50%",
-                                            backgroundColor: "rgba(255,255,255,0.85)",
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            backdropFilter: "blur(2px)",
+                                            position: "relative",
                                         }}
                                     >
-                                        <InstagramIcon fontSize="small" />
-                                    </Box>
-                                </CardActionArea>
+                                        <Box
+                                            component="img"
+                                            src={src}
+                                            alt={`home-${i}`}
+                                            sx={{
+                                                width: "100%",
+                                                height: "100%",
+                                                objectFit: "cover",
+                                                filter: "saturate(95%)",
+                                            }}
+                                        />
+                                        <Box
+                                            sx={{
+                                                position: "absolute",
+                                                top: 8,
+                                                right: 8,
+                                                width: 28,
+                                                height: 28,
+                                                borderRadius: "50%",
+                                                // backgroundColor: "rgba(255,255,255,0.85)",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                backdropFilter: "blur(2px)",
+                                            }}
+                                        >
+                                            <InstagramIcon fontSize="small" sx={{color:"white"}} />
+                                        </Box>
+                                    </CardActionArea>
+                                </a>
                             </Card>
                         ))}
+
                     </Box>
 
                     <Box
                         sx={{
                             "@keyframes scrollRight": {
-                                "0%": { transform: "translateX(-50%)" },
-                                "100%": { transform: "translateX(0%)" },
+                                "0%": { transform: "translateX(0%)" },
+                                "100%": { transform: "translateX(-15%)" },
                             },
                         }}
                     />

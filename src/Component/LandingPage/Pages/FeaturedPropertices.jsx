@@ -7,22 +7,22 @@ const Data = [
     {
         id: "1",
         Image: "/image/Pic1.png",
-        Price: "500,000INR"
+        Price: "500,000₹"
     },
     {
         id: "2",
         Image: "/image/pic2.png",
-        Price: "90,000INR / Per month"
+        Price: "90,000₹ / Per month"
     },
     {
         id: "3",
         Image: "/image/pic3.png",
-        Price: "500,000INR"
+        Price: "500,000₹"
     },
     {
         id: "4",
         Image: "/image/pic4.png",
-        Price: "350,000INR / Per month"
+        Price: "350,000₹ / Per month"
     },
 ]
 
@@ -77,7 +77,7 @@ const FeaturedPropertices = () => {
                                     marginTop: "20px",
                                     display:{xs:"none", md:"block"}
                                 }}>
-                                   Discover a carefully selected range luxury properties, including apartments, <br /> homes  and commercial spaces that are designed to your needs for <br /> investment and lifestyle. We are Brixone Spaces, and we can <br /> connect to properties that blend contemporary design, <br /> prime areas, and value for the long term.
+                                   Discover a carefully selected range luxury properties, including apartments,  homes  and commercial <br /> spaces that are designed to your needs for  investment and lifestyle. We are Brixone Spaces, and we <br />can  connect to properties that blend contemporary design, prime areas, and value for the long term.
                                 </Typography>
                                 <Typography sx={{
                                     fontFamily: "Afacad",

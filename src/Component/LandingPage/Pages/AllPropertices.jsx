@@ -8,42 +8,42 @@ const Data = [
     {
         id: "1",
         Image: "/image/Pic1.png",
-        Price: "500,000INR"
+        Price: "500,000₹ / per month"
     },
     {
         id: "2",
         Image: "/image/pic2.png",
-        Price: "90,000INR / Per month"
+        Price: "90,000₹ / Per month"
     },
     {
         id: "3",
         Image: "/image/pic3.png",
-        Price: "500,000INR"
+        Price: "500,000₹ / per month"
     },
     {
         id: "4",
         Image: "/image/pic4.png",
-        Price: "350,000INR / Per month"
+        Price: "350,000₹ / Per month"
     },
     {
         id: "5",
         Image: "/image/pic5.png",
-        Price: "500,000INR"
+        Price: "500,000₹ / per month"
     },
     {
         id: "6",
         Image: "/image/pic6.png",
-        Price: "90,000INR / Per month"
+        Price: "90,000₹ / Per month"
     },
     {
         id: "7",
         Image: "/image/pic7.png",
-        Price: "500,000INR"
+        Price: "90,000₹ / Per month"
     },
     {
         id: "8",
         Image: "/image/pic8.png",
-        Price: "500,000INR"
+        Price: "500,000₹ / per month" 
     },
 ]
 
@@ -80,7 +80,7 @@ const AllPropertices = () => {
                                     lineHeight: "100%",
                                 }}>
 
-                                We're committed to discovering
+                               Find the Property That Fits You
                             </Typography>
                         </Box>
                     </Grid>
@@ -107,7 +107,7 @@ const AllPropertices = () => {
 
 
 
-            <Grid container spacing={2} mt={5}>
+            <Grid container spacing={2} sx={{ marginTop: { xs: "20px", md: "30px" } }}>
                 {
                     Data.map((item, index) => {
                         return (
@@ -165,7 +165,7 @@ const AllPropertices = () => {
                                             color: "#202020",
                                             marginTop: "8px"
                                         }}>
-                                            Lorem ipsum dolor
+                                            Crestview Luxe Homes
                                         </Typography>
                                     </Box>
                                     <Box sx={{ display: 'flex', flexFlow: "row", justifyContent: 'space-between', width: '100%', mt: "10px" }}>

@@ -44,7 +44,7 @@ const Footer = () => {
                                             border: '1px solid #FFFFFF',
                                             borderRadius: '6px',
                                             backgroundColor: '#2A6BE5',
-                                            padding: '5px 10px',
+                                            padding: '5px 5px',
                                             width: '90%',
                                         }}
                                     >
@@ -133,7 +133,7 @@ const Footer = () => {
                                         fontSize: "18px",
                                         color: "#FFFFFF",
                                     }}>
-                                        lorem Ipsum Ahmadabad, India
+                                        402, Zion Z1 Off Sindhu Bhavan Road Bodakdev Ahmedabad 380054
                                     </Typography>
                                 </Box>
                             </Box>

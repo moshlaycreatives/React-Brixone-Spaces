@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import React, { useState } from 'react';
 import {
     Tabs,
@@ -8,16 +7,15 @@ import {
     Paper
 } from '@mui/material';
 import { Box, Typography, Button, Grid } from "@mui/material";
-import AboutSection from "./AboutSection";
-import ServicesSection from "./ServicesSection";
-import AllPropertices from "./AllPropertices";
-import FeaturedPropertices from "./FeaturedPropertices";
-import HomeBanner from "./HomeBanner";
-import Article from "./Article";
-import Footer from "./Footer";
-import ImageBox from "./ImageBox";
-import ClientReview from "./ClientReview";
-import InsagramSlider from "./InsagramSlider";
+import AboutSection from "./Pages/AboutSection";
+import ServicesSection from "./Pages/ServicesSection";
+import AllPropertices from "./Pages/AllPropertices";
+import FeaturedPropertices from "./Pages/FeaturedPropertices";
+import HomeBanner from "./Pages/HomeBanner";
+import Article from "./Pages/Article";
+import ImageBox from "./Pages/ImageBox";
+import ClientReview from "./Pages/ClientReview";
+import InsagramSlider from "./Pages/InsagramSlider";
 
 
 
@@ -35,8 +33,7 @@ const LandingPage = () => {
 
     return (
         <>
-            <Navbar />
-
+    
             {/* HERO SECTION */}
             <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
                 <Box sx={{ padding: { xs: "0px 20px", md: "0px 75px" } }}>
@@ -55,13 +52,14 @@ const LandingPage = () => {
                             <Typography sx={{
                                 fontFamily: "Afacad",
                                 fontWeight: 600,
-                                fontSize: { xs: "25px", md: "70px" },
+                                fontSize: { xs: "25px", md: "50px" },
                                 color: "#FFFFFF",
                                 lineHeight: { xs: "35px", md: "70px" },
                             }}>
-                                Elevate Lifestyle Luxury <br />
-                                Meets Comfort
+                                {/* Elevate Lifestyle Luxury <br />
+                                Meets Comfort */}
 
+                                We Help You Find Your Dream Property <br /> With  Ease And Comfort
                             </Typography>
 
                             <Typography sx={{
@@ -72,7 +70,9 @@ const LandingPage = () => {
                                 mt: 2,
                                 display: { xs: "none", md: "block" }
                             }}>
-                                Explore a carefully curated selection of luxurious properties and investment <br /> opportunities that blend contemporary architecture with the ultimate in <br /> convenience. With Brixone Spaces, we help you locate properties that fit <br />your needs, whether you're looking to rent, purchase, sell, or invest.
+                                {/* Explore a carefully curated selection of luxurious properties and investment <br /> opportunities that blend contemporary architecture with the ultimate in <br /> convenience. With Brixone Spaces, we help you locate properties that fit <br />your needs, whether you're looking to rent, purchase, sell, or invest. */}
+
+                                Discover a handpicked selection of properties and smart investment opportunities that blend <br />  modern comfort, stylish design, and strong potential for appreciation. At Brixone Spaces,  we <br />  makeit easy to find the right property whether you're looking to  buy, sell, invest, or rent.
                             </Typography>
                             <Typography sx={{
                                 fontFamily: "Afacad",
@@ -105,7 +105,7 @@ const LandingPage = () => {
                         <Box
                             sx={{
                                 position: 'absolute',
-                                bottom: { xs: "-140px", md: "-100px" },
+                                bottom: { xs: "-140px", md: "-60px" },
                                 left: '50%',
                                 transform: 'translateX(-50%)',
                                 width: '80%',
@@ -233,7 +233,7 @@ const LandingPage = () => {
                                             value={budget}
                                             onChange={(e) => setBudget(e.target.value)}
                                             fullWidth
-                                           
+
                                             size="small"
                                             SelectProps={{
                                                 displayEmpty: true, // 👈 shows placeholder even if value=""
@@ -292,19 +292,22 @@ const LandingPage = () => {
                 }>
                     <AboutSection />
                 </Box >
-                <Box sx={{ mt: "50px" }}>
+
+
+                <Box sx={{ mt: { xs: "20px", md: "50px" } }}>
                     <FeaturedPropertices />
                 </Box>
 
-
                 {/* Our Services */}
-                <Box sx={{ mt: "50px", padding: { xs: "0px 20px", md: "0px 75px" } }}>
+                <Box sx={{ mt: "35px", padding: { xs: "0px 20px", md: "0px 75px" } }}>
                     <ServicesSection />
                 </Box>
+
+
                 <Box sx={{ mt: "50px", padding: { xs: "0px 20px", md: "0px 75px" } }}>
                     <AllPropertices />
                 </Box>
-                <Box sx={{ mt: "50px", }}>
+                <Box sx={{ marginTop: { xs: "35px", md: "35px" } }}>
                     <HomeBanner />
                 </Box>
                 <Box>
@@ -316,12 +319,7 @@ const LandingPage = () => {
                 <Box>
                     <InsagramSlider />
                 </Box>
-                <Box sx={{ mt: "50px", px: { xs: "0px", md: "75px" } }}>
-                    <Footer />
-                </Box>
-                <Box>
-                    <ImageBox />
-                </Box>
+              
 
             </Box >
 
