@@ -323,7 +323,7 @@ const Contact = () => {
                                         // value={paymentMethod}
                                         // onChange={(e) => setPaymentMethod(e.target.value)}
                                         >
-                                            <MenuItem value="">
+                                            <MenuItem >
                                                 Select
                                             </MenuItem>
                                         </Select>

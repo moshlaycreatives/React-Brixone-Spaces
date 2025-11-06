@@ -223,10 +223,10 @@ const AboutUs = () => {
 
 
                             <Box>
-                                <Typography style={{
+                                <Typography sx={{
                                     fontFamily: "Afacad",
                                     fontWeight: 600,
-                                    fontSize: "35px",
+                                    fontSize: { xs: "25px", md: "35px" },
                                     textTransform: "capitalize",
                                     color: "#2A6BE5",
                                     marginTop: "-10px"
@@ -269,10 +269,10 @@ const AboutUs = () => {
 
 
                             <Box>
-                                <Typography style={{
+                                <Typography sx={{
                                     fontFamily: "Afacad",
                                     fontWeight: 600,
-                                    fontSize: "35px",
+                                   fontSize: { xs: "25px", md: "35px" },
                                     textTransform: "capitalize",
                                     color: "#202020",
                                     marginTop: "-10px"
@@ -317,7 +317,7 @@ const AboutUs = () => {
                                 <Typography style={{
                                     fontFamily: "Afacad",
                                     fontWeight: 600,
-                                    fontSize: "35px",
+                                  fontSize: { xs: "25px", md: "35px" },
                                     textTransform: "capitalize",
                                     color: "#202020",
                                     marginTop: "-10px"

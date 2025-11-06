@@ -9,7 +9,6 @@ import {
     InputAdornment,
     IconButton,
 } from "@mui/material";
-import Checkbox from "@mui/material/Checkbox";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
@@ -18,18 +17,16 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 
 
-const Login = () => {
+const NewPassword = () => {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
 
-    const handleSignup = () => {
-        navigate(`/SignUp`)
+    const handleLogin = () => {
+        navigate(`/Login`)
     }
 
-    const handleForgot = () => {
-        navigate(`/ForgotPassword`)
-    }
+
 
 
     return (
@@ -77,7 +74,7 @@ const Login = () => {
                                 backgroundColor: "white",
                             }}
                         >
-                            <Box sx={{ padding: "30px 30px 10px 30px" }}>
+                            <Box sx={{ padding: "30px 30px 15px 30px" }}>
                                 <Typography
                                     style={{
                                         fontFamily: "Afacad",
@@ -86,7 +83,7 @@ const Login = () => {
                                         color: "#202020",
                                     }}
                                 >
-                                    Sign In
+                                    Create New Password
                                 </Typography>
                                 <Typography
                                     style={{
@@ -94,14 +91,14 @@ const Login = () => {
                                         fontWeight: 400,
                                         fontSize: "18px",
                                         color: "#676767",
-                                        marginTop:"10px"
+                                        marginTop: "5px"
                                     }}
                                 >
-                                    Welcome! Please enter your details
+                                    Your new password must be different from  previously used password.
                                 </Typography>
                             </Box>
 
-                            <Box sx={{ padding: "0px 30px" }}>
+                            <Box sx={{ padding: "0px 30px", mt: "5px" }}>
                                 <Grid container spacing={2}>
                                     <Grid item size={{ xs: 12, md: 12 }}>
                                         <Typography
@@ -114,45 +111,12 @@ const Login = () => {
                                                 margin: "0px 0px 10px 0px",
                                             }}
                                         >
-                                            Email
-                                        </Typography>
-                                        <TextField
-                                            fullWidth
-                                            placeholder="Enter your email"
-                                            sx={{
-                                                "& .MuiOutlinedInput-root": {
-                                                    borderRadius: "10px",
-                                                    "& fieldset": { border: "1px solid #F4F4F4" },
-                                                    "&:hover fieldset": { border: "1px solid #F4F4F4" },
-                                                    "&.Mui-focused fieldset": {
-                                                        border: "2px solid #F4F4F4",
-                                                    },
-                                                },
-                                            }}
-                                        />
-                                    </Grid>
-                                </Grid>
-                            </Box>
-
-                            <Box sx={{ padding: "0px 30px", mt: "15px" }}>
-                                <Grid container spacing={2}>
-                                    <Grid item size={{ xs: 12, md: 12 }}>
-                                        <Typography
-                                            style={{
-                                                fontFamily: "Afacad",
-                                                fontWeight: 600,
-                                                fontSize: "18px",
-                                                lineHeight: "31px",
-                                                color: "#202020",
-                                                margin: "0px 0px 10px 0px",
-                                            }}
-                                        >
-                                            Password
+                                            New Password
                                         </Typography>
                                         <TextField
                                             fullWidth
                                             type={showPassword ? "text" : "password"}
-                                            placeholder="Enter your password"
+                                            placeholder="Enter your new password"
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -190,53 +154,62 @@ const Login = () => {
                                 </Grid>
                             </Box>
 
-                            <Box sx={{ padding: "10px 30px" }}>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        flexFlow: "row",
-                                        justifyContent: "space-between",
-                                        width: "100%",
-                                    }}
-                                >
-                                    <Box sx={{ display: "flex" }}>
-                                        <Checkbox
-                                            sx={{
+                            <Box sx={{ padding: "0px 30px", mt: "15px" }}>
+                                <Grid container spacing={2}>
+                                    <Grid item size={{ xs: 12, md: 12 }}>
+                                        <Typography
+                                            style={{
+                                                fontFamily: "Afacad",
+                                                fontWeight: 600,
+                                                fontSize: "18px",
+                                                lineHeight: "31px",
                                                 color: "#202020",
-                                                '&.Mui-checked': {
-                                                    color: "#202020",
+                                                margin: "0px 0px 10px 0px",
+                                            }}
+                                        >
+                                            Confirm Password
+                                        </Typography>
+                                        <TextField
+                                            fullWidth
+                                            type={showPassword ? "text" : "password"}
+                                            placeholder="Enter your confirm password"
+                                            sx={{
+                                                "& .MuiOutlinedInput-root": {
+                                                    borderRadius: "10px",
+                                                    "& fieldset": { border: "1px solid #F4F4F4" },
+                                                    "&:hover fieldset": { border: "1px solid #F4F4F4" },
+                                                    "&.Mui-focused fieldset": {
+                                                        border: "2px solid #F4F4F4",
+                                                    },
                                                 },
                                             }}
+                                            InputProps={{
+                                                endAdornment: (
+                                                    <InputAdornment position="end">
+                                                        <IconButton
+                                                            aria-label={
+                                                                showPassword ? "Hide password" : "Show password"
+                                                            }
+                                                            onClick={() =>
+                                                                setShowPassword((prev) => !prev)
+                                                            }
+                                                            onMouseDown={(e) => e.preventDefault()}
+                                                            edge="end"
+                                                        >
+                                                            {showPassword ? (
+                                                                <VisibilityOff />
+                                                            ) : (
+                                                                <Visibility />
+                                                            )}
+                                                        </IconButton>
+                                                    </InputAdornment>
+                                                ),
+                                            }}
                                         />
-                                        <Typography
-                                            style={{
-                                                fontFamily: "Afacad",
-                                                fontWeight: 400,
-                                                fontSize: "18px",
-                                                color: "#676767",
-                                                marginTop: "8px",
-                                            }}
-                                        >
-                                            Remember me
-                                        </Typography>
-                                    </Box>
-                                    <Box sx={{ display: "flex" }}>
-                                        <Typography
-                                            style={{
-                                                fontFamily: "Afacad",
-                                                fontWeight: 400,
-                                                fontSize: "18px",
-                                                color: "#2A6BE5",
-                                                marginTop: "8px",
-                                                cursor: "pointer",
-                                            }}
-                                            onClick={handleForgot}
-                                        >
-                                            Forgot Password?
-                                        </Typography>
-                                    </Box>
-                                </Box>
+                                    </Grid>
+                                </Grid>
                             </Box>
+
 
                             <Box sx={{ padding: "30px" }}>
                                 <Button
@@ -253,33 +226,10 @@ const Login = () => {
                                     }}
                                     variant="contained"
                                 >
-                                    Log In
+                                    Save New Password
                                 </Button>
                             </Box>
 
-                            <Box display="flex" justifyContent="center" paddingBottom={3}>
-                                <Typography
-                                    style={{
-                                        fontFamily: "Afacad",
-                                        fontWeight: 400,
-                                        fontSize: "18px",
-                                        color: "#676767",
-                                    }}
-                                >
-                                    Don’t have an account?{" "}
-                                    <strong
-                                        style={{
-                                            cursor: "pointer",
-                                            color: "#2A6BE5",
-                                            fontSize: "18px",
-                                            fontWeight: 500,
-                                        }}
-                                        onClick={handleSignup}
-                                    >
-                                        Sign Up
-                                    </strong>
-                                </Typography>
-                            </Box>
                         </Box>
                     </Grid>
                 </Grid>
@@ -288,4 +238,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default NewPassword;

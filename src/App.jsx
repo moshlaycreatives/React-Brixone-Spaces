@@ -8,7 +8,11 @@ import Sell from "./Component/Sell/Sell";
 import Invest from "./Component/Invest/Invest";
 import Contact from "./Component/Contact/Contact";
 import Login from "./Component/Login/Login";
-
+import SignUp from "./Component/Login/SignUp";
+import ForgotPassword from "./Component/Login/ForgotPassword";
+import EmailOtp from "./Component/Login/EmailOtp";
+import NewPassword from "./Component/Login/NewPassword";
+import PropertyDetail from "./Component/Rent/PropertyDetail";
 
 
 const App = () => {
@@ -23,9 +27,14 @@ const App = () => {
           <Route path="/Sell" element={<Sell />} />
           <Route path="/Invest" element={<Invest />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/PropertyDetail" element={<PropertyDetail />} />
 
         </Route>
         <Route path="/Login" element={<Login />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
+        <Route path="/EmailOtp" element={<EmailOtp />} />
+        <Route path="/NewPassword" element={<NewPassword />} />
       </Routes>
     </>
   );

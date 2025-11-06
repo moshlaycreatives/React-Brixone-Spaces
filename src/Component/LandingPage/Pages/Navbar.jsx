@@ -4,14 +4,22 @@ import { useNavigate } from 'react-router-dom';
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import SegmentOutlinedIcon from '@mui/icons-material/SegmentOutlined';
+import Cart from './Cart';
+
+
+
 
 const Navbar = () => {
   const navigate = useNavigate();
   const theme = useTheme();
+  const [cartOpen, setCartOpen] = React.useState(false);
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
 
+  const handleOpenCart = () => setCartOpen(true);
+  const handleCloseCart = () => setCartOpen(false);
 
   const handlelogin = () => {
     navigate(`/Login`)
@@ -46,25 +54,31 @@ const Navbar = () => {
             }}
           >
             {/* Left: Get in touch */}
-            <Button
-              sx={{
+            <Box>
+              <IconButton onClick={handleOpenCart}>
+                <SegmentOutlinedIcon />
+              </IconButton>
+              <Button
+                sx={{
+                  fontFamily: 'Afacad',
+                  fontWeight: 400,
+                  fontSize: { xs: "15px", md: "16px" },
+                  textTransform: 'none',
+                  height: 40,
+                  px: 1.5,
+                  backgroundColor: '#2A6BE5',
+                  color: '#FFFFFF',
+                  borderRadius: '6px',
+                  justifySelf: 'start',
+                }}
+                // onClick={() => window.open('https://wa.me/919227000989', '_blank')}
+                // startIcon={<WhatsAppIcon />}
+                onClick={handlelogin}
+              >
+                Login
+              </Button>
 
-                fontFamily: 'Afacad',
-                fontWeight: 400,
-                fontSize: { xs: "8px", md: "16px" },
-                textTransform: 'none',
-                height: 40,
-                px: 1.5,
-                backgroundColor: '#2A6BE5',
-                color: '#FFFFFF',
-                borderRadius: '6px',
-                justifySelf: 'start',
-              }}
-              onClick={() => window.open('https://wa.me/919227000989', '_blank')}
-              startIcon={<WhatsAppIcon />}
-            >
-
-            </Button>
+            </Box>
 
             {/* Center: Logo */}
             <Box sx={{ justifySelf: 'center' }}>
@@ -116,7 +130,7 @@ const Navbar = () => {
                   fontWeight: 400,
                   fontSize: '18px',
                   textTransform: 'none',
-                  width: 140,
+                  width: 80,
                   height: 48,
                   backgroundColor: '#2A6BE5',
                   color: '#FFFFFF',
@@ -130,6 +144,9 @@ const Navbar = () => {
               >
                 Login
               </Button>
+              <IconButton onClick={handleOpenCart}>
+                <SegmentOutlinedIcon />
+              </IconButton>
             </Box>
           </Box>
         )}
@@ -154,6 +171,8 @@ const Navbar = () => {
           ))}
         </List>
       </Drawer>
+
+      <Cart open={cartOpen} onClose={handleCloseCart} />
     </Box>
   );
 };
