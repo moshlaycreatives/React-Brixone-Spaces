@@ -1,6 +1,6 @@
 import { Box, Typography, Button, Grid, Divider } from "@mui/material";
-
-
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import ShareIcon from '@mui/icons-material/Share';
 
 
 const PropertyDetail = () => {
@@ -58,7 +58,7 @@ const PropertyDetail = () => {
 
 
 
-            <Box sx={{ mt: "70px", padding: { xs: "0px 20px", md: "0px 75px" } }}>
+            <Box sx={{ mt: { xs: "40px", md: "70px" }, padding: { xs: "0px 20px", md: "0px 75px" } }}>
                 <Grid container spacing={2}>
                     <Grid size={{ xs: 12, md: 9 }}>
                         <Typography sx={{
@@ -67,6 +67,7 @@ const PropertyDetail = () => {
                             fontSize: "18px",
                             textTransform: "capitalize",
                             color: "#676767",
+                            textAlign: { xs: "Center", md: "start" }
 
                         }}>
                             Listing Date: Aug, 19, 2025
@@ -81,9 +82,11 @@ const PropertyDetail = () => {
                                     fontSize: "18px",
                                     textTransform: "capitalize",
                                     color: "#202020",
-                                    padding: "5px 40px",
-                                    boxShadow: "0px 0px 8px 0px #0000001A"
+                                    padding: "5px 20px",
+                                    boxShadow: "0px 0px 8px 0px #0000001A",
+                                    gap: "10px"
                                 }}>
+                                    <BookmarkBorderOutlinedIcon sx={{ fontSize: "22px" }} />
                                     Save
                                 </Button>
                             </Box>
@@ -94,9 +97,11 @@ const PropertyDetail = () => {
                                     fontSize: "18px",
                                     textTransform: "capitalize",
                                     color: "#2A6BE5",
-                                    padding: "5px 40px",
-                                    boxShadow: "0px 0px 8px 0px #0000001A"
+                                    padding: "5px 20px",
+                                    boxShadow: "0px 0px 8px 0px #0000001A",
+                                    gap: "10px"
                                 }}>
+                                    <ShareIcon />
                                     Share
                                 </Button>
                             </Box>
@@ -112,7 +117,7 @@ const PropertyDetail = () => {
                                 fontSize: { xs: "25px", md: "50px" },
                                 textTransform: "capitalize",
                                 color: "#202020",
-                                marginTop: "-15px"
+                                marginTop: { xs: "15px", md: "-15px" }
 
                             }}>
                                 Lorem Ipsum is simply dummy
@@ -123,6 +128,7 @@ const PropertyDetail = () => {
                                 fontSize: { xs: "20px", md: "20px" },
                                 textTransform: "capitalize",
                                 color: "#676767",
+                                marginTop: { xs: "10px", md: "0px" }
 
 
                             }}>
@@ -203,7 +209,6 @@ const PropertyDetail = () => {
             </Box>
 
 
-
             <Box sx={{ mt: "30px", px: { xs: "20px", md: "75px" } }}>
                 <Grid container spacing={2}>
                     {[
@@ -240,9 +245,7 @@ const PropertyDetail = () => {
                 </Grid>
             </Box>
 
-
             <Box sx={{ mt: "30px", px: { xs: "20px", md: "75px" } }}>
-
                 <Grid container spacing={3}>
                     <Grid size={{ xs: 12, md: 8 }}>
                         <Box>
@@ -346,9 +349,9 @@ const PropertyDetail = () => {
                             <Box mt={2}>
                                 <Grid container spacing={2}>
                                     {[
-                                        { label: "Ground Floor", bg: "transparent", color: "#2A6BE5", border: "1px solid #2A6BE5", xs: 4, sm: 4, md: 2 },
-                                        { label: "First Floor", bg: "transparent", color: "#676767", border: "1px solid #676767", xs: 4, sm: 4, md: 1.5 },
-                                        { label: "Second Floor", bg: "transparent", color: "#676767", border: "1px solid #676767", xs: 4, sm: 4, md: 2 },
+                                        { label: "Ground Floor", bg: "transparent", color: "#2A6BE5", border: "1px solid #2A6BE5", xs: 6, sm: 4, md: 2 },
+                                        { label: "First Floor", bg: "transparent", color: "#676767", border: "1px solid #676767", xs: 6, sm: 4, md: 1.5 },
+                                        { label: "Second Floor", bg: "transparent", color: "#676767", border: "1px solid #676767", xs: 6, sm: 4, md: 2 },
 
                                     ].map((btn, index) => (
                                         <Grid item key={index} size={{ xs: btn.xs, sm: btn.sm, md: btn.md }}>
@@ -471,8 +474,8 @@ const PropertyDetail = () => {
                         <Box sx={{
                             backgroundColor: "#2A6BE5",
                             borderRadius: "15px",
-                            padding:"20px 35px",
-                            mt:"40px"
+                            padding: "20px 35px",
+                            mt: "40px"
 
                         }}>
                             <Typography sx={{
@@ -490,17 +493,13 @@ const PropertyDetail = () => {
                                 fontSize: "20px",
                                 textTransform: "capitalize",
                                 color: "#FFFFFF",
-                                marginTop:"10px"
+                                marginTop: "10px"
                             }}>
                                 +91 (309) 2087119
                             </Typography>
                         </Box>
 
 
-
-
-
-                        
                     </Grid>
                 </Grid >
 
