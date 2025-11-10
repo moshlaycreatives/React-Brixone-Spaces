@@ -11,6 +11,9 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+// import { endpoints } from "../apiEndpoints";
+// import axios from "axios";
+// import toast from "react-hot-toast";
 
 
 
@@ -19,12 +22,48 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const SignUp = () => {
     const navigate = useNavigate();
+    const [formData, setformData] = useState({
+        fullName: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
+        ConfirmPassword: ""
+
+    })
     const [showPassword, setShowPassword] = useState(false);
 
 
     const handleLogin = () => {
         navigate(`/Login`)
     }
+
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setformData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+
+
+    // const Createuser = async (e) => {
+
+    //     if (formData.ConfirmPassword && formData.password !== formData.ConfirmPassword) {
+    //         toast.error("Passwords do not match");
+    //         return;
+    //     }
+    //     try {
+    //         const response = await axios.post(endpoints.LoginAPI,
+    //             formData
+    //         );
+
+    //         toast.success(response.data.message);
+    //     } catch (error) {
+    //         toast.error(error.response?.data?.message || "An error occurred");
+    //     }
+    // };
+
 
 
 
@@ -116,6 +155,9 @@ const SignUp = () => {
                                         <TextField
                                             fullWidth
                                             placeholder="Enter your full name"
+                                            name="fullName"
+                                            value={formData.fullName}
+                                            onChange={handleChange}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -148,6 +190,9 @@ const SignUp = () => {
                                         <TextField
                                             fullWidth
                                             placeholder="Enter your email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -180,6 +225,9 @@ const SignUp = () => {
                                         <TextField
                                             fullWidth
                                             placeholder="Enter your phone no."
+                                            name="phoneNumber"
+                                            value={formData.phoneNumber}
+                                            onChange={handleChange}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -214,6 +262,9 @@ const SignUp = () => {
                                             fullWidth
                                             type={showPassword ? "text" : "password"}
                                             placeholder="Enter your password"
+                                            name="password"
+                                            value={formData.password}
+                                            onChange={handleChange}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -270,6 +321,9 @@ const SignUp = () => {
                                             fullWidth
                                             type={showPassword ? "text" : "password"}
                                             placeholder="Enter your confirm password"
+                                            name="ConfirmPassword"
+                                            value={formData.ConfirmPassword}
+                                            onChange={handleChange}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
