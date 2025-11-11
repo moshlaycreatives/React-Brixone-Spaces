@@ -35,7 +35,7 @@ const Navbar = () => {
     { text: 'Rent', link: '/Rent' },
     { text: 'Sell', link: '/Sell' },
     { text: 'Invest', link: '/Invest' },
-    { text: 'Blog', link: '' },
+    { text: 'Blog', link: '/Blog' },
     { text: 'Contact', link: '/Contact' },
   ];
 

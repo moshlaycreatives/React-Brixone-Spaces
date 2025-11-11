@@ -357,7 +357,7 @@ const Rent = () => {
                                 <Grid item size={{ xs: 12, sm: 6, md: 3 }} key={index} mt={2}>
                                     <Box sx={{ width: "100%" }}>
                                         <Box sx={{ position: "relative", width: "100%" }}>
-                                            <img src={item.Image} onClick={handlePropertDetail} style={{ width: "100%", height: "285px", objectFit: "cover", borderRadius: "8px", }} />
+                                            <img src={item.Image} onClick={handlePropertDetail} style={{ width: "100%", height: "285px", objectFit: "cover", borderRadius: "8px", cursor:"pointer" }} />
                                             <Box
                                                 sx={{
                                                     position: "absolute",

@@ -13,6 +13,9 @@ import ForgotPassword from "./Component/Login/ForgotPassword";
 import EmailOtp from "./Component/Login/EmailOtp";
 import NewPassword from "./Component/Login/NewPassword";
 import PropertyDetail from "./Component/Rent/PropertyDetail";
+import Blog from "./Component/Blog/Blog";
+import BlogDetail from "./Component/Blog/BlogDetail";
+
 
 
 const App = () => {
@@ -27,7 +30,9 @@ const App = () => {
           <Route path="/Sell" element={<Sell />} />
           <Route path="/Invest" element={<Invest />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/Blog" element={<Blog />} />
           <Route path="/PropertyDetail" element={<PropertyDetail />} />
+          <Route path="/BlogDetail" element={<BlogDetail />} />
 
         </Route>
         <Route path="/Login" element={<Login />} />
