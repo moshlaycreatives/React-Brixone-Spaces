@@ -55,28 +55,17 @@ const Navbar = () => {
           >
             {/* Left: Get in touch */}
             <Box>
-              <IconButton onClick={handleOpenCart}>
+              {/* <IconButton onClick={handleOpenCart}>
                 <SegmentOutlinedIcon />
-              </IconButton>
-              <Button
-                sx={{
-                  fontFamily: 'Afacad',
-                  fontWeight: 400,
-                  fontSize: { xs: "15px", md: "16px" },
-                  textTransform: 'none',
-                  height: 40,
-                  px: 1.5,
-                  backgroundColor: '#2A6BE5',
-                  color: '#FFFFFF',
-                  borderRadius: '6px',
-                  justifySelf: 'start',
-                }}
-                // onClick={() => window.open('https://wa.me/919227000989', '_blank')}
-                // startIcon={<WhatsAppIcon />}
-                onClick={handlelogin}
+              </IconButton> */}
+              <IconButton
+                aria-label="open navigation"
+                onClick={handleDrawerToggle}
+                sx={{ justifySelf: 'end' }}
               >
-                Login
-              </Button>
+                <MenuIcon />
+              </IconButton>
+
 
             </Box>
 
@@ -90,13 +79,23 @@ const Navbar = () => {
             </Box>
 
             {/* Right: Menu button */}
-            <IconButton
-              aria-label="open navigation"
-              onClick={handleDrawerToggle}
-              sx={{ justifySelf: 'end' }}
+            <Button
+              sx={{
+                fontFamily: 'Afacad',
+                fontWeight: 400,
+                fontSize: { xs: "15px", md: "16px" },
+                textTransform: 'none',
+                height: 40,
+                px: 1.5,
+                backgroundColor: '#2A6BE5',
+                color: '#FFFFFF',
+                borderRadius: '6px',
+                justifySelf: 'start',
+              }}
+              onClick={handlelogin}
             >
-              <MenuIcon />
-            </IconButton>
+              Login
+            </Button>
           </Box>
         ) : (
           /* DESKTOP LAYOUT */
@@ -137,8 +136,6 @@ const Navbar = () => {
                   borderRadius: '6px',
                   padding: "5px"
                 }}
-                // onClick={() => window.open('https://wa.me/919227000989', '_blank')}
-                // startIcon={<WhatsAppIcon />}
 
                 onClick={handlelogin}
               >
@@ -153,7 +150,7 @@ const Navbar = () => {
       </Toolbar>
 
       {/* Drawer: RIGHT side */}
-      <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerToggle}>
+      <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle}>
         <List sx={{ width: 250 }}>
           {menuItems.map((item, index) => (
             <ListItem

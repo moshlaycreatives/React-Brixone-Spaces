@@ -1,7 +1,8 @@
 import { Box, Typography, Grid, Button } from "@mui/material";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { useNavigate } from "react-router-dom";
-
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
 
 
@@ -162,15 +163,19 @@ const Blog = () => {
                                         }}>
                                             {item.title}
                                         </Typography>
-                                        <Box sx={{ display: "flex", gap: "40px" }}>
+                                        <Box sx={{ display: "flex", gap: "30px" ,  mt:"5px" }}>
                                             <Typography style={{
                                                 fontFamily: "Afacad",
                                                 fontWeight: 400,
                                                 fontSize: "18px",
                                                 textTransform: "capitalize",
                                                 color: "#202020",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "3px"
 
                                             }}>
+                                                <VisibilityOutlinedIcon sx={{ fontSize: "20px", color: "#2A6BE5" }} />
                                                 {item.eye}
                                             </Typography>
                                             <Typography style={{
@@ -179,7 +184,11 @@ const Blog = () => {
                                                 fontSize: "18px",
                                                 textTransform: "capitalize",
                                                 color: "#202020",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "3px"
                                             }}>
+                                                <CalendarMonthOutlinedIcon sx={{ fontSize: "17px", color: "#2A6BE5" }} />
                                                 {item.Date}
                                             </Typography>
 
@@ -245,15 +254,19 @@ const Blog = () => {
                                         }}>
                                             {item.title}
                                         </Typography>
-                                        <Box sx={{ display: "flex", gap: "40px" }}>
+                                        <Box sx={{ display: "flex", gap: "30px" , mt:"5px" }}>
                                             <Typography style={{
                                                 fontFamily: "Afacad",
                                                 fontWeight: 400,
                                                 fontSize: "18px",
                                                 textTransform: "capitalize",
                                                 color: "#202020",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "3px"
 
                                             }}>
+                                                <VisibilityOutlinedIcon sx={{ fontSize: "20px", color: "#2A6BE5" }} />
                                                 {item.eye}
                                             </Typography>
                                             <Typography style={{
@@ -262,7 +275,11 @@ const Blog = () => {
                                                 fontSize: "18px",
                                                 textTransform: "capitalize",
                                                 color: "#202020",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "3px"
                                             }}>
+                                                <CalendarMonthOutlinedIcon sx={{ fontSize: "17px", color: "#2A6BE5" }} />
                                                 {item.Date}
                                             </Typography>
 

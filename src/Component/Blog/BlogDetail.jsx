@@ -1,5 +1,12 @@
 import { Box, Typography, Grid, Button } from "@mui/material";
 import AddReview from "./AddReview";
+import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+
+
+
+
 
 
 const BlogDetail = () => {
@@ -59,7 +66,7 @@ const BlogDetail = () => {
 
             <Box sx={{
                 display: "flex",
-                gap: "20px",
+                gap: "25px",
                 padding: { xs: "0px 20px", md: "0px 75px" },
                 mt: "50px"
             }}>
@@ -69,8 +76,12 @@ const BlogDetail = () => {
                     fontSize: "18px",
                     textTransform: "capitalize",
                     color: "#202020",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "2px"
 
                 }}>
+                    < Person2OutlinedIcon sx={{ fontSize: "17px", color: "#2A6BE5" }} />
                     Shyamal Patel
                 </Typography>
                 <Typography sx={{
@@ -79,8 +90,12 @@ const BlogDetail = () => {
                     fontSize: "18px",
                     textTransform: "capitalize",
                     color: "#202020",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "3px"
 
                 }}>
+                    <VisibilityOutlinedIcon sx={{ fontSize: "17px", color: "#2A6BE5" }} />
                     345
                 </Typography>
                 <Typography sx={{
@@ -89,8 +104,11 @@ const BlogDetail = () => {
                     fontSize: "18px",
                     textTransform: "capitalize",
                     color: "#202020",
-
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "4px"
                 }}>
+                    <CalendarMonthOutlinedIcon sx={{ fontSize: "17px", color: "#2A6BE5" }} />
                     May 19,2025
                 </Typography>
             </Box>
@@ -118,7 +136,16 @@ const BlogDetail = () => {
                             Native to the savannas of sub-Saharan Africa, the Kudu (Tragelaphus strepsiceros) is a large, majestic antelope known for its spiraled horns and striking tan coat adorned with vertical white stripes. Males can sport impressive horns that grow up to 5 feet long and are capable of leaping high fences when startled, showcasing their agility and grace. They thrive in areas where dense brush and open grasslands meet, allowing them to graze freely while using the cover for protection.
                         </Typography>
                         <Box sx={{ mt: "30px" }}>
-                            <img src="/image/BlogDetail.png" style={{ width: "100%", height: "450px", borderRadius: "15px" }} />
+                            <Box
+                                component="img"
+                                src="/image/BlogDetail.png"
+                                sx={{
+                                    width: "100%",
+                                    height: { xs: "250px", md: "450px" },
+                                    borderRadius: "15px",
+                                    objectFit: "cover"
+                                }}
+                            />
                         </Box>
 
                     </Box>
@@ -172,8 +199,26 @@ const BlogDetail = () => {
                         </Typography>
                     </Box>
                     <Box sx={{ gap: "10px", display: "flex", mt: "20px" }}>
-                        <img src="/image/BlogDetail.png" style={{ width: "50%", height: "400px", borderRadius: "15px" }} />
-                        <img src="/image/BlogDetail.png" style={{ width: "50%", height: "400px", borderRadius: "15px" }} />
+                        <Box
+                            component="img"
+                            src="/image/BlogDetail.png"
+                            sx={{
+                                width: "50%",
+                                height: { xs: "200px", md: "400px" },
+                                borderRadius: "15px",
+                                objectFit: "cover"
+                            }}
+                        />
+                        <Box
+                            component="img"
+                            src="/image/BlogDetail.png"
+                            sx={{
+                                width: "50%",
+                                height: { xs: "200px", md: "400px" },
+                                borderRadius: "15px",
+                                objectFit: "cover"
+                            }}
+                        />
                     </Box>
                     <Box>
                         <Typography sx={{
@@ -207,7 +252,16 @@ const BlogDetail = () => {
 
                     <Box>
                         <Box sx={{ mt: "30px" }}>
-                            <img src="/image/BlogDetail.png" style={{ width: "100%", height: "450px", borderRadius: "15px" }} />
+                          <Box
+                                component="img"
+                                src="/image/BlogDetail.png"
+                                sx={{
+                                    width: "100%",
+                                    height: { xs: "250px", md: "450px" },
+                                    borderRadius: "15px",
+                                    objectFit: "cover"
+                                }}
+                            />
                         </Box>
                         <Typography sx={{
                             fontFamily: "Afacad",
