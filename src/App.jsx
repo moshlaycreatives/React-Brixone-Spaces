@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import Layout from "./Layout";
 import LandingPage from "./Component/LandingPage/LandingPage";
 import AboutUs from "./Component/AboutUs/AboutUs";
@@ -22,6 +23,7 @@ import AdminPortal from "./AdminPanel/Sidebar/AdminPortal";
 const App = () => {
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
@@ -40,7 +42,6 @@ const App = () => {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
         <Route path="/EmailOtp" element={<EmailOtp />} />
-        <Route path="/NewPassword" element={<NewPassword />} />
         <Route path="/NewPassword" element={<NewPassword />} />
         <Route path="/dashboard/*" element={<AdminPortal />} />
 

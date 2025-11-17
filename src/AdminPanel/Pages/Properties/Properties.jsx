@@ -46,7 +46,7 @@ const Data = [
 
 
 
-const Properties = () => {
+const Properties = ({ propertyType = "For Sale" }) => {
     return (
         <>
             <Box>
@@ -56,7 +56,7 @@ const Properties = () => {
                     fontSize: "36px",
                     color: "#202020",
                 }}>
-                    Dashboard /<span style={{ color: "#4079ED" }}> For Sale</span>
+                    Dashboard /<span style={{ color: "#4079ED" }}> {propertyType}</span>
                 </Typography>
             </Box>
 
@@ -98,7 +98,7 @@ const Properties = () => {
                                                     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
                                                 }}
                                             >
-                                                For Sale
+                                                {propertyType}
                                             </Box>
                                         </Box>
                                         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", }}>

@@ -53,7 +53,12 @@ const AdminPortal = () => {
                 <Routes>
                     {/* Default route: redirect to dashboard */}
                     <Route path="" element={<Dashboard />} />
-                    <Route path="properties" element={<Properties />} />
+                    <Route
+                        path="properties"
+                        element={<Navigate to="/dashboard/properties/for-sale" replace />}
+                    />
+                    <Route path="properties/for-sale" element={<Properties propertyType="For Sale" />} />
+                    <Route path="properties/for-rent" element={<Properties propertyType="For Rent" />} />
                     <Route path="tours" element={<Tours />} />
                     <Route path="members" element={<Members />} />
                     <Route path="soldOut" element={<SoldOut />} />

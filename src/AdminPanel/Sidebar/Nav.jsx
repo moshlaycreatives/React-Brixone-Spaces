@@ -17,10 +17,11 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import { Typography, TextField, InputAdornment } from "@mui/material";
+import { Typography, TextField, InputAdornment, Collapse } from "@mui/material";
 import Profile from "./Profile";
-import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 
 
@@ -37,8 +38,8 @@ const Nav = ({ menuData }) => {
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
   const [isOpen, setIsOpen] = useState(isLargeScreen);
-  const [name, setname] = useState();
   const location = useLocation();
+  const [openItems, setOpenItems] = useState({});
 
 
 
@@ -47,7 +48,10 @@ const Nav = ({ menuData }) => {
     setIsOpen(!isOpen);
   };
 
-  const renderIcon = (iconName, isActive) => {
+  const renderIcon = (iconName = "", isActive) => {
+    if (!iconName) {
+      return null;
+    }
     if (iconName.includes("/image/")) {
       const imageStyle = {
         width: "24px",
@@ -63,6 +67,26 @@ const Nav = ({ menuData }) => {
       return Icon ? <Icon style={iconStyle} /> : null;
     }
   };
+
+  const toggleSubMenu = (itemId) => {
+    setOpenItems((prev) => ({
+      ...prev,
+      [itemId]: !prev[itemId],
+    }));
+  };
+
+  useEffect(() => {
+    menuData.forEach((item) => {
+      if (
+        item.children &&
+        item.children.some((child) => child.path === location.pathname)
+      ) {
+        setOpenItems((prev) =>
+          prev[item.id] ? prev : { ...prev, [item.id]: true }
+        );
+      }
+    });
+  }, [location.pathname, menuData]);
 
   const drawer = (
     <div style={{ backgroundColor: "#FFFFFF", height: "100vh", width: "290px" }}>
@@ -88,41 +112,101 @@ const Nav = ({ menuData }) => {
       ))}
 
       <List>
-        {menuData.map((item, index) => {
+        {menuData.map((item) => {
+          const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+          const isChildActive =
+            hasChildren &&
+            item.children.some((child) => child.path === location.pathname);
+          const isActive =
+            (!hasChildren && location.pathname === item.path) || isChildActive;
 
-          const isActive = location.pathname === item.path;
+          const commonStyles = {
+            backgroundColor: isActive ? "#4079ED" : "transparent",
+            color: isActive ? "#FFFFFF" : "#6D6E71",
+            width: "205px",
+            margin: "8px auto",
+            borderRadius: "8px",
+          };
+
+          const buttonProps = hasChildren
+            ? {
+              onClick: () => toggleSubMenu(item.id),
+            }
+            : {
+              component: NavLink,
+              to: item.path,
+            };
+
           return (
-            <ListItemButton
-              key={item.id}
-              component={NavLink}
-              to={item.path}
-              style={{
-                backgroundColor: isActive ? "#4079ED" : "transparent",
-                color: isActive ? "#FFFFFF" : "#6D6E71",
-                width: "205px",
-                margin: "8px auto",
-                borderRadius: "8px",
-              }}
-            >
-              <ListItemIcon
-                style={{
-                  minWidth: "40px",
-                }}
+            <React.Fragment key={item.id}>
+              <ListItemButton
+                {...buttonProps}
+                style={commonStyles}
               >
-                {renderIcon(item.icon, isActive)}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.label}
-                sx={{
-                  "& .MuiTypography-root": {
-                    fontSize: "21px",
-                    fontFamily: "Outfit",
-                    fontWeight: 400,
-                    lineHeight: "26px",
-                  },
-                }}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                  style={{
+                    minWidth: "40px",
+                  }}
+                >
+                  {renderIcon(item.icon, isActive)}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.label}
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: "21px",
+                      fontFamily: "Outfit",
+                      fontWeight: 400,
+                      lineHeight: "26px",
+                    },
+                  }}
+                />
+                {hasChildren && (
+                  <>
+                    {openItems[item.id] ? (
+                      <ExpandLess style={{ color: isActive ? "#FFFFFF" : "#6D6E71" }} />
+                    ) : (
+                      <ExpandMore style={{ color: isActive ? "#FFFFFF" : "#6D6E71" }} />
+                    )}
+                  </>
+                )}
+              </ListItemButton>
+              {hasChildren && (
+                <Collapse in={openItems[item.id]} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {item.children.map((child) => {
+                      const childActive = location.pathname === child.path;
+                      return (
+                        <ListItemButton
+                          key={child.id}
+                          component={NavLink}
+                          to={child.path}
+                          style={{
+                            backgroundColor: childActive ? "#4079ED" : "transparent",
+                            color: childActive ? "#FFFFFF" : "#6D6E71",
+                            width: "185px",
+                            margin: "8px auto",
+                            borderRadius: "8px",
+                          }}
+                        >
+                          <ListItemText
+                            primary={child.label}
+                            sx={{
+                              "& .MuiTypography-root": {
+                                fontSize: "18px",
+                                fontFamily: "Outfit",
+                                fontWeight: 400,
+                                lineHeight: "24px",
+                              },
+                            }}
+                          />
+                        </ListItemButton>
+                      );
+                    })}
+                  </List>
+                </Collapse>
+              )}
+            </React.Fragment>
           );
         })}
       </List>

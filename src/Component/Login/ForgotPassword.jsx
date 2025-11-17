@@ -9,6 +9,10 @@ import {
     InputAdornment,
     IconButton,
 } from "@mui/material";
+import { endpoints } from "../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 
 
 
@@ -18,12 +22,34 @@ import {
 
 const ForgotPassword = () => {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
 
 
 
     const handleEmailOtp = () => {
-        navigate(`/EmailOtp`)
+        navigate(`/EmailOtp`, { state: { email } })
     }
+
+
+
+    const handleForgotPassword = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post(endpoints.ForgotPassword, {
+                email: email,
+
+            });
+
+            if (response.status === 200) {
+                toast.success(response.data.message);
+            }
+            handleEmailOtp();
+        } catch (error) {
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    };
+
 
 
     return (
@@ -112,6 +138,8 @@ const ForgotPassword = () => {
                                         <TextField
                                             fullWidth
                                             placeholder="Enter your email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -141,7 +169,7 @@ const ForgotPassword = () => {
                                         borderRadius: "6px",
                                     }}
                                     variant="contained"
-                                    onClick={handleEmailOtp}
+                                    onClick={handleForgotPassword}
                                 >
                                     Send
                                 </Button>

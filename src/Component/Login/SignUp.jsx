@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-// import { endpoints } from "../apiEndpoints";
-// import axios from "axios";
-// import toast from "react-hot-toast";
+import { endpoints } from "../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
@@ -33,6 +33,7 @@ const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
 
 
+
     const handleLogin = () => {
         navigate(`/Login`)
     }
@@ -47,22 +48,22 @@ const SignUp = () => {
     };
 
 
-    // const Createuser = async (e) => {
+    const Createuser = async (e) => {
 
-    //     if (formData.ConfirmPassword && formData.password !== formData.ConfirmPassword) {
-    //         toast.error("Passwords do not match");
-    //         return;
-    //     }
-    //     try {
-    //         const response = await axios.post(endpoints.LoginAPI,
-    //             formData
-    //         );
+        if (formData.ConfirmPassword && formData.password !== formData.ConfirmPassword) {
+            toast.error("Passwords do not match");
+            return;
+        }
+        try {
+            const response = await axios.post(endpoints.userRegister,
+                formData
+            );
 
-    //         toast.success(response.data.message);
-    //     } catch (error) {
-    //         toast.error(error.response?.data?.message || "An error occurred");
-    //     }
-    // };
+            toast.success(response.data.message);
+        } catch (error) {
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    };
 
 
 
@@ -377,6 +378,7 @@ const SignUp = () => {
                                         borderRadius: "6px",
                                     }}
                                     variant="contained"
+                                    onClick={Createuser}
                                 >
                                     Sign Up
                                 </Button>

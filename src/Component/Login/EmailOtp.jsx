@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
     Box,
     Typography,
@@ -7,18 +7,23 @@ import {
     Button,
     TextField,
 } from "@mui/material";
-
-
-
+import { endpoints } from "../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
 
 const EmailOtp = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { email } = location.state || {};
     const [otp, setOtp] = useState(["", "", "", "", "", ""]);
 
     const inputRefs = useRef([]);
+
+
+    console.log("this is forgot email address", email)
 
     const handleOtpChange = (e, index) => {
         const value = e.target.value;
@@ -43,9 +48,28 @@ const EmailOtp = () => {
 
 
     const handlePassword = () => {
-        navigate(`/NewPassword`)
+        navigate(`/NewPassword`, { state: { email } })
     }
 
+
+
+    const handleOTPVerify = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post(endpoints.OtPVerify, {
+                email: email,
+                otp: otp.join(""),
+            });
+
+            if (response.status === 200) {
+                toast.success(response.data.message);
+            }
+            handlePassword();
+        } catch (error) {
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    };
 
     return (
         <>
@@ -180,7 +204,7 @@ const EmailOtp = () => {
                                         borderRadius: "6px",
                                     }}
                                     variant="contained"
-                                    onClick={handlePassword}
+                                    onClick={handleOTPVerify}
                                 >
                                     Verify Code
                                 </Button>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
     Box,
     Typography,
@@ -11,7 +11,9 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
+import { endpoints } from "../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
@@ -19,13 +21,55 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const NewPassword = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { email } = location.state || {};
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 
     const handleLogin = () => {
         navigate(`/Login`)
     }
 
+    const handlePassword = async (e) => {
+        e.preventDefault();
+
+        if (!email) {
+            toast.error("Email is required. Please go back to the forgot password page.");
+            return;
+        }
+
+        if (!password || !confirmPassword) {
+            toast.error("Please fill both password fields");
+            return;
+        }
+
+        if (password.length < 6) {
+            toast.error("Password must be at least 6 characters long");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            toast.error("Passwords do not match!");
+            return;
+        }
+
+        try {
+            const response = await axios.post(endpoints.AddNewPassword, {
+                email: email,
+                newPassword: password,
+            });
+
+            if (response.status === 200) {
+                toast.success(response.data.message || "Password reset successfully");
+                handleLogin();
+            }
+        } catch (error) {
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    };
 
 
 
@@ -74,31 +118,32 @@ const NewPassword = () => {
                                 backgroundColor: "white",
                             }}
                         >
-                            <Box sx={{ padding: "30px 30px 15px 30px" }}>
-                                <Typography
-                                    style={{
-                                        fontFamily: "Afacad",
-                                        fontWeight: 600,
-                                        fontSize: "25px",
-                                        color: "#202020",
-                                    }}
-                                >
-                                    Create New Password
-                                </Typography>
-                                <Typography
-                                    style={{
-                                        fontFamily: "Afacad",
-                                        fontWeight: 400,
-                                        fontSize: "18px",
-                                        color: "#676767",
-                                        marginTop: "5px"
-                                    }}
-                                >
-                                    Your new password must be different from  previously used password.
-                                </Typography>
-                            </Box>
+                            <form onSubmit={handlePassword}>
+                                <Box sx={{ padding: "30px 30px 15px 30px" }}>
+                                    <Typography
+                                        style={{
+                                            fontFamily: "Afacad",
+                                            fontWeight: 600,
+                                            fontSize: "25px",
+                                            color: "#202020",
+                                        }}
+                                    >
+                                        Create New Password
+                                    </Typography>
+                                    <Typography
+                                        style={{
+                                            fontFamily: "Afacad",
+                                            fontWeight: 400,
+                                            fontSize: "18px",
+                                            color: "#676767",
+                                            marginTop: "5px"
+                                        }}
+                                    >
+                                        Your new password must be different from previously used password.
+                                    </Typography>
+                                </Box>
 
-                            <Box sx={{ padding: "0px 30px", mt: "5px" }}>
+                                <Box sx={{ padding: "0px 30px", mt: "5px" }}>
                                 <Grid container spacing={2}>
                                     <Grid item size={{ xs: 12, md: 12 }}>
                                         <Typography
@@ -116,7 +161,9 @@ const NewPassword = () => {
                                         <TextField
                                             fullWidth
                                             type={showPassword ? "text" : "password"}
-                                            placeholder="Enter your new password"
+                                            placeholder="Enter new password..."
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -171,8 +218,10 @@ const NewPassword = () => {
                                         </Typography>
                                         <TextField
                                             fullWidth
-                                            type={showPassword ? "text" : "password"}
-                                            placeholder="Enter your confirm password"
+                                            type={showConfirmPassword ? "text" : "password"}
+                                            placeholder="Re-type new password..."
+                                            value={confirmPassword}
+                                            onChange={(e) => setConfirmPassword(e.target.value)}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -188,15 +237,15 @@ const NewPassword = () => {
                                                     <InputAdornment position="end">
                                                         <IconButton
                                                             aria-label={
-                                                                showPassword ? "Hide password" : "Show password"
+                                                                showConfirmPassword ? "Hide password" : "Show password"
                                                             }
                                                             onClick={() =>
-                                                                setShowPassword((prev) => !prev)
+                                                                setShowConfirmPassword((prev) => !prev)
                                                             }
                                                             onMouseDown={(e) => e.preventDefault()}
                                                             edge="end"
                                                         >
-                                                            {showPassword ? (
+                                                            {showConfirmPassword ? (
                                                                 <VisibilityOff />
                                                             ) : (
                                                                 <Visibility />
@@ -211,25 +260,26 @@ const NewPassword = () => {
                             </Box>
 
 
-                            <Box sx={{ padding: "30px" }}>
-                                <Button
-                                    style={{
-                                        fontFamily: "Afacad",
-                                        fontWeight: 400,
-                                        fontSize: "18px",
-                                        color: "#FFFFFF",
-                                        width: "100%",
-                                        height: "48px",
-                                        backgroundColor: "#2A6BE5",
-                                        textTransform: "none",
-                                        borderRadius: "6px",
-                                    }}
-                                    variant="contained"
-                                >
-                                    Save New Password
-                                </Button>
-                            </Box>
-
+                                <Box sx={{ padding: "30px" }}>
+                                    <Button
+                                        type="submit"
+                                        style={{
+                                            fontFamily: "Afacad",
+                                            fontWeight: 400,
+                                            fontSize: "18px",
+                                            color: "#FFFFFF",
+                                            width: "100%",
+                                            height: "48px",
+                                            backgroundColor: "#2A6BE5",
+                                            textTransform: "none",
+                                            borderRadius: "6px",
+                                        }}
+                                        variant="contained"
+                                    >
+                                        Save New Password
+                                    </Button>
+                                </Box>
+                            </form>
                         </Box>
                     </Grid>
                 </Grid>

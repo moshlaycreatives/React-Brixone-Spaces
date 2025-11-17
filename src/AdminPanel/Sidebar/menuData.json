@@ -8,8 +8,19 @@
     {
         "id": 2,
         "label": "Properties",
-        "path": "/dashboard/properties",
-        "icon": "ShoppingCartOutlined"
+        "icon": "ShoppingCartOutlined",
+        "children": [
+            {
+                "id": "2-1",
+                "label": "For Sale",
+                "path": "/dashboard/properties/for-sale"
+            },
+            {
+                "id": "2-2",
+                "label": "For Rent",
+                "path": "/dashboard/properties/for-rent"
+            }
+        ]
     },
     {
         "id": 3,

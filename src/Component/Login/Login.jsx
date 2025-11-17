@@ -12,9 +12,9 @@ import {
 import Checkbox from "@mui/material/Checkbox";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-// import { endpoints } from "../apiEndpoints";
-// import axios from "axios";
-// import toast from "react-hot-toast";
+import { endpoints } from "../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
@@ -23,8 +23,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const Login = () => {
     const navigate = useNavigate();
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
 
@@ -42,20 +42,20 @@ const Login = () => {
     }
 
 
-    // const handleLogin = async (e) => {
-    //     e.preventDefault();
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-    //     try {
-    //         const response = await axios.post(endpoints.LoginAPI, {
-    //             email: email,
-    //             password: password,
-    //         });
+        try {
+            const response = await axios.post(endpoints.LoginApi, {
+                email: email,
+                password: password,
+            });
 
-    //         toast.success(response.data.message);
-    //     } catch (error) {
-    //         toast.error(error.response?.data?.message || "An error occurred");
-    //     }
-    // };
+            toast.success(response.data.message);
+        } catch (error) {
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    };
 
 
 
@@ -146,8 +146,8 @@ const Login = () => {
                                         <TextField
                                             fullWidth
                                             placeholder="Enter your email"
-                                            // value={email}
-                                            // onChange={(e) => setEmail(e.target.value)}
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -182,8 +182,8 @@ const Login = () => {
                                             fullWidth
                                             type={showPassword ? "text" : "password"}
                                             placeholder="Enter your password"
-                                            // value={password}
-                                            // onChange={(e) => setPassword(e.target.value)}
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
                                             sx={{
                                                 "& .MuiOutlinedInput-root": {
                                                     borderRadius: "10px",
@@ -283,8 +283,9 @@ const Login = () => {
                                         borderRadius: "6px",
                                     }}
                                     variant="contained"
-                                    onClick={handleDashboard}
+                                    onClick={handleLogin}
                                 >
+
                                     Log In
                                 </Button>
                             </Box>
