@@ -1,110 +1,3 @@
-// import { Box, Typography, Button, Grid } from "@mui/material";
-// import { ArrowBack, ArrowForward } from '@mui/icons-material';
-
-
-
-
-
-
-// const ClientReview = () => {
-//     return (
-//         <>
-// <Box sx={{ px: "50px", backgroundColor: "#E9E9E9", py: "30px" }}>
-//     <Box
-//         sx={{
-//             display: "inline-block",
-//             mt: 5,
-//             borderRadius: 1,
-//         }}
-//     >
-//         <Typography
-//             sx={{
-//                 fontFamily: "Afacad",
-//                 fontWeight: 400,
-//                 fontSize: "18px",
-//                 color: "#676767",
-//                 lineHeight: "100%",
-//             }}
-//         >
-//             Testimonial
-//         </Typography>
-//     </Box>
-
-//     <Box>
-//         <Grid container spacing={2}>
-//             <Grid size={{ xs: 12, md: 10 }}>
-//                 <Box>
-//                     <Typography sx={{
-//                         fontFamily: "Afacad",
-//                         fontWeight: 600,
-//                         fontSize: "50px",
-//                         color: "#202020",
-//                         lineHeight: "100%",
-//                         marginTop: "20px"
-//                     }}>
-//                         What Our Customers Says
-//                     </Typography>
-//                 </Box>
-//             </Grid>
-//             <Grid size={{ xs: 12, md: 2 }}>
-//                 <Box
-//                     mt={5}
-//                     display="flex"
-//                     gap={2}
-//                     justifyContent={{ xs: 'center', md: 'flex-end' }}
-//                 >
-//                     <Button
-//                         variant="outlined"
-//                         sx={{
-//                             minWidth: '45px',
-//                             height: '30px',
-//                             borderRadius: '24px',
-//                             borderColor: '#676767',
-//                             color: '#676767'
-//                         }}
-//                     >
-//                         <ArrowBack fontSize="small" />
-//                     </Button>
-//                     <Button
-//                         variant="contained"
-//                         sx={{
-//                             minWidth: '45px',
-//                             height: '30px',
-//                             borderRadius: '24px',
-//                             backgroundColor: '#2A6BE5',
-
-//                         }}
-//                     >
-//                         <ArrowForward fontSize="small" />
-//                     </Button>
-//                 </Box>
-//             </Grid>
-
-//         </Grid>
-//     </Box>
-
-
-
-
-
-
-
-
-// </Box>
-
-
-
-
-
-//         </>
-//     )
-// }
-
-
-// export default ClientReview;
-
-
-
 
 import * as React from "react";
 import {
@@ -302,7 +195,7 @@ export default function ClientReview() {
                     sx={{
                         px: { xs: 2, md: 6 },
                         columnGap: { xs: 0, md: `200px` },
-
+                       
                     }}
                 >
                     <Grid item size={{ xs: 12, md: 5 }} >

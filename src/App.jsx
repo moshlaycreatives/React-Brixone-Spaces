@@ -15,6 +15,7 @@ import NewPassword from "./Component/Login/NewPassword";
 import PropertyDetail from "./Component/Rent/PropertyDetail";
 import Blog from "./Component/Blog/Blog";
 import BlogDetail from "./Component/Blog/BlogDetail";
+import AdminPortal from "./AdminPanel/Sidebar/AdminPortal";
 
 
 
@@ -40,6 +41,9 @@ const App = () => {
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
         <Route path="/EmailOtp" element={<EmailOtp />} />
         <Route path="/NewPassword" element={<NewPassword />} />
+        <Route path="/NewPassword" element={<NewPassword />} />
+        <Route path="/dashboard/*" element={<AdminPortal />} />
+
       </Routes>
     </>
   );

@@ -37,6 +37,10 @@ const Login = () => {
     }
 
 
+    const handleDashboard = () => {
+        navigate(`/dashboard`)
+    }
+
 
     // const handleLogin = async (e) => {
     //     e.preventDefault();
@@ -279,6 +283,7 @@ const Login = () => {
                                         borderRadius: "6px",
                                     }}
                                     variant="contained"
+                                    onClick={handleDashboard}
                                 >
                                     Log In
                                 </Button>

@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "label": "Dashboard",
+        "path": "/dashboard",
+        "icon": "Equalizer"
+    },
+    {
+        "id": 2,
+        "label": "Properties",
+        "path": "/dashboard/properties",
+        "icon": "ShoppingCartOutlined"
+    },
+    {
+        "id": 3,
+        "label": "Tours",
+        "path": "/dashboard/tours",
+        "icon": "DashboardOutlined"
+    },
+    {
+        "id": 4,
+        "label": "Members",
+        "path": "/dashboard/members",
+        "icon": "PhotoSizeSelectActualOutlined"
+    },
+    {
+        "id": 5,
+        "label": "Sold Out",
+        "path": "/dashboard/soldOut",
+        "icon": "PhotoSizeSelectActualOutlined"
+    },
+    {
+        "id": 6,
+        "label": "Brochure",
+        "path": "/dashboard/brochure",
+        "icon": "PhotoSizeSelectActualOutlined"
+    },
+    {
+        "id": 7,
+        "label": "Blog",
+        "path": "/dashboard/blog",
+        "icon": "PhotoSizeSelectActualOutlined"
+    },
+    {
+        "id": 8,
+        "label": "Testimonial",
+        "path": "/dashboard/testimonial",
+        "icon": "PhotoSizeSelectActualOutlined"
+    }
+]
