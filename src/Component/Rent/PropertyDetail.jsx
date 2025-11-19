@@ -1,4 +1,4 @@
-import { Box, Typography, Button, Grid, Divider } from "@mui/material";
+import { Box, Typography, Button, Grid, Divider, TextField } from "@mui/material";
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 
@@ -498,6 +498,164 @@ const PropertyDetail = () => {
                                 +91 (309) 2087119
                             </Typography>
                         </Box>
+
+
+
+                        <Box sx={{
+                            boxShadow: "0px 4px 30px 0px #0000001A",
+                            borderRadius: "15px",
+                            backgroundColor: "white",
+                            marginTop: "20px",
+                            padding: "20px"
+                        }}>
+
+                            <Typography sx={{
+                                fontFamily: "Afacad",
+                                fontWeight: 500,
+                                fontSize: { xs: "30px", md: "30px" },
+                                color: "#202020",
+                                mb: "10px"
+                            }}>
+                                Book a Tour
+                            </Typography>
+                            <Box>
+                                <Divider />
+                            </Box>
+
+                            <Grid container spacing={2} mt={3}>
+                                <Grid size={{ xs: 12, md: 12 }}>
+                                    <TextField
+                                        fullWidth
+                                        placeholder="Full Name"
+                                        // value={vehicleModel}
+                                        // onChange={(e) => setVehicleModel(e.target.value)}
+                                        sx={{
+                                            "& .MuiOutlinedInput-root": {
+                                                borderRadius: "10px",
+
+                                                "& fieldset": {
+                                                    border: "1px solid #F4F4F4",
+                                                },
+                                                "&:hover fieldset": {
+                                                    border: "1px solid #F4F4F4",
+                                                },
+                                                "&.Mui-focused fieldset": {
+                                                    border: "2px solid #F4F4F4",
+                                                },
+                                            },
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid size={{ xs: 12, md: 12 }}>
+                                    <TextField
+                                        fullWidth
+                                        placeholder="Email"
+                                        // value={vehicleModel}
+                                        // onChange={(e) => setVehicleModel(e.target.value)}
+                                        sx={{
+                                            "& .MuiOutlinedInput-root": {
+                                                borderRadius: "10px",
+
+                                                "& fieldset": {
+                                                    border: "1px solid #F4F4F4",
+                                                },
+                                                "&:hover fieldset": {
+                                                    border: "1px solid #F4F4F4",
+                                                },
+                                                "&.Mui-focused fieldset": {
+                                                    border: "2px solid #F4F4F4",
+                                                },
+                                            },
+                                        }}
+                                    />
+                                </Grid>
+
+
+                            </Grid>
+                            <Grid container spacing={2} mt={3}>
+                                <Grid size={{ xs: 12, md: 12 }}>
+                                    <TextField
+                                        fullWidth
+                                        placeholder="Phone No."
+                                        // value={vehicleModel}
+                                        // onChange={(e) => setVehicleModel(e.target.value)}
+                                        sx={{
+                                            "& .MuiOutlinedInput-root": {
+                                                borderRadius: "10px",
+
+                                                "& fieldset": {
+                                                    border: "1px solid #F4F4F4",
+                                                },
+                                                "&:hover fieldset": {
+                                                    border: "1px solid #F4F4F4",
+                                                },
+                                                "&.Mui-focused fieldset": {
+                                                    border: "2px solid #F4F4F4",
+                                                },
+                                            },
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid size={{ xs: 12, md: 12 }}>
+                                    <TextField
+                                        fullWidth
+                                        placeholder="Select Date"
+                                        type="date"
+                                        // value={vehicleModel}
+                                        // onChange={(e) => setVehicleModel(e.target.value)}
+                                        sx={{
+                                            "& .MuiOutlinedInput-root": {
+                                                borderRadius: "10px",
+
+                                                "& fieldset": {
+                                                    border: "1px solid #F4F4F4",
+                                                },
+                                                "&:hover fieldset": {
+                                                    border: "1px solid #F4F4F4",
+                                                },
+                                                "&.Mui-focused fieldset": {
+                                                    border: "2px solid #F4F4F4",
+                                                },
+                                            },
+                                        }}
+                                    />
+                                </Grid>
+
+
+                            </Grid>
+                            <Grid container spacing={2} mt={3}>
+                                <Grid size={{ xs: 12, md: 12 }}>
+                                    <Button style={{
+                                        backgroundColor: "#4079ED",
+                                        color: "#FFFFFF",
+                                        fontSize: "16px",
+                                        lineHeight: "16px",
+                                        fontWeight: 400,
+                                        textTransform: "none",
+                                        width: "100%",
+                                        height: "50px",
+                                        margin: "0px 0px 10px 0px",
+                                        borderRadius: "10px"
+                                    }}
+                                        variant="outlined"
+                                       
+                                    >Book Now</Button>
+                                </Grid>
+
+
+
+                            </Grid>
+
+
+
+                        </Box>
+
+
+
+
+
+
+
 
 
                     </Grid>
