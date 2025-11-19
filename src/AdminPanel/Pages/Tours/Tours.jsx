@@ -13,7 +13,9 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
 import Menu from '@mui/material/Menu';
-
+import MenuItem from '@mui/material/MenuItem';
+import DeleteTour from "./DeleteTour";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 
 
@@ -83,7 +85,7 @@ const Data = [
         PropertyName: "Lorem Ipsum dolot sit",
         Date: "09-10-2024"
     },
-  
+
 ]
 
 
@@ -118,7 +120,7 @@ const Tours = () => {
         setShowPopup(false);
     };
 
-    const handleRequest = () => {
+    const handleDelete = () => {
         setAnchorEl(null);
         setShowPopup(true);
     };
@@ -130,6 +132,11 @@ const Tours = () => {
 
     return (
         <>
+            <DeleteTour
+                open={showPopup}
+                onClose={handleClosePopup}
+
+            />
 
 
             <Box>
@@ -200,10 +207,9 @@ const Tours = () => {
                                                 horizontal: 'left',
                                             }}
                                         >
-
-                                            {/* <MenuItem>View Order</MenuItem>
-                                            <MenuItem>Cancel Order</MenuItem> */}
-
+                                            <MenuItem onClick={handleDelete} sx={{ color: "#ED4040", gap: "5px" }}>
+                                                <RiDeleteBinLine fontSize="20px" sx={{}} />
+                                                Delete</MenuItem>
                                         </Menu>
                                     </TableCell>
                                 </TableRow>

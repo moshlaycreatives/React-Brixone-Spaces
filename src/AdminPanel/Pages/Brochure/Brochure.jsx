@@ -164,7 +164,7 @@ const Brochure = () => {
                                 <TableCell style={{ fontFamily: "Outfit", fontWeight: 600, fontSize: "14px", lineHeight: "21px" }}>Phone</TableCell>
                                 <TableCell style={{ fontFamily: "Outfit", fontWeight: 600, fontSize: "14px", lineHeight: "21px" }}>Property Name</TableCell>
                                 <TableCell style={{ fontFamily: "Outfit", fontWeight: 600, fontSize: "14px", lineHeight: "21px" }}>Date</TableCell>
-                                <TableCell style={{ fontFamily: "Outfit", fontWeight: 600, fontSize: "14px", lineHeight: "21px" }}>Action</TableCell>
+                                {/* <TableCell style={{ fontFamily: "Outfit", fontWeight: 600, fontSize: "14px", lineHeight: "21px" }}>Action</TableCell> */}
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -176,7 +176,8 @@ const Brochure = () => {
                                     <TableCell>{row.Phone}</TableCell>
                                     <TableCell>{row.PropertyName}</TableCell>
                                     <TableCell>{row.Date}</TableCell>
-                                    <TableCell>
+
+                                    {/* <TableCell>
                                         <IconButton
                                             aria-controls={open ? 'demo-positioned-menu' : undefined}
                                             aria-haspopup="true"
@@ -201,11 +202,12 @@ const Brochure = () => {
                                             }}
                                         >
 
-                                            {/* <MenuItem>View Order</MenuItem>
-                                            <MenuItem>Cancel Order</MenuItem> */}
+                                            <MenuItem>View Order</MenuItem>
+                                            <MenuItem>Cancel Order</MenuItem>
 
                                         </Menu>
-                                    </TableCell>
+                                    </TableCell> */}
+                                    
                                 </TableRow>
                             ))}
                         </TableBody>

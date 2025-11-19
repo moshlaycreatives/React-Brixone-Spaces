@@ -13,7 +13,10 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
 import Menu from '@mui/material/Menu';
-
+import MenuItem from '@mui/material/MenuItem';
+import DeleteMember from "./DeleteMember";
+import BlockMember from "./BlockMember";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 
 
@@ -87,6 +90,7 @@ const Members = () => {
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
+    const [BlockPopup, setBlockPopup] = useState(false);
 
 
     const open = Boolean(anchorEl);
@@ -110,10 +114,17 @@ const Members = () => {
     const handleClosePopup = () => {
         setShowPopup(false);
     };
+    const handleCloseBlockPopup = () => {
+        setBlockPopup(false);
+    };
 
-    const handleRequest = () => {
+    const handleDelete = () => {
         setAnchorEl(null);
         setShowPopup(true);
+    };
+    const handleBlock = () => {
+        setAnchorEl(null);
+        setBlockPopup(true);
     };
 
 
@@ -124,6 +135,16 @@ const Members = () => {
     return (
         <>
 
+            <DeleteMember
+                open={showPopup}
+                onClose={handleClosePopup}
+
+            />
+            <BlockMember
+                open={BlockPopup}
+                onClose={handleCloseBlockPopup}
+
+            />
 
             <Box>
                 <Typography style={{
@@ -192,8 +213,10 @@ const Members = () => {
                                             }}
                                         >
 
-                                            {/* <MenuItem>View Order</MenuItem>
-                                            <MenuItem>Cancel Order</MenuItem> */}
+                                            <MenuItem onClick={handleBlock}>Block</MenuItem>
+                                            <MenuItem onClick={handleDelete} sx={{ color: "#ED4040", gap: "5px" }}>
+                                                <RiDeleteBinLine fontSize="20px" sx={{}} />
+                                                Delete</MenuItem>
 
                                         </Menu>
                                     </TableCell>

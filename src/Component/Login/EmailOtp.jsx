@@ -23,8 +23,6 @@ const EmailOtp = () => {
     const inputRefs = useRef([]);
 
 
-    console.log("this is forgot email address", email)
-
     const handleOtpChange = (e, index) => {
         const value = e.target.value;
 

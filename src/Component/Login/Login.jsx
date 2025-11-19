@@ -283,7 +283,8 @@ const Login = () => {
                                         borderRadius: "6px",
                                     }}
                                     variant="contained"
-                                    onClick={handleLogin}
+                                    // onClick={handleLogin}
+                                    onClick={handleDashboard}
                                 >
 
                                     Log In

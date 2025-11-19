@@ -1,5 +1,6 @@
 import { Box, Typography, Button, Grid, Divider } from "@mui/material";
-
+import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from "react-router-dom";
 
 const Data = [
     {
@@ -47,9 +48,17 @@ const Data = [
 
 
 const Properties = ({ propertyType = "For Sale" }) => {
+    const navigate = useNavigate();
+
+    const handleAddProperty = () => {
+        navigate(`/dashboard/AddProperty`)
+    }
+
+
     return (
         <>
-            <Box>
+
+            <Box sx={{ display: 'flex', flexFlow: "row", justifyContent: 'space-between', width: '100%', }}>
                 <Typography style={{
                     fontFamily: "Outfit",
                     fontWeight: 600,
@@ -58,7 +67,28 @@ const Properties = ({ propertyType = "For Sale" }) => {
                 }}>
                     Dashboard /<span style={{ color: "#4079ED" }}> {propertyType}</span>
                 </Typography>
-            </Box>
+                <Box sx={{ display: 'flex', gap: "10px" }}>
+                    <Button style={{
+                        backgroundColor: "#4079ED",
+                        color: "#FFFFFF",
+                        fontSize: "16px",
+                        lineHeight: "16px",
+                        fontWeight: 400,
+                        textTransform: "none",
+                        width: "180px",
+                        height: "50px",
+                        margin: "0px 0px 10px 0px",
+                        borderRadius: "10px"
+                    }}
+                        variant="outlined"
+                        startIcon={<AddIcon />}
+                        onClick={handleAddProperty}
+                    >Add Property</Button>
+                </Box>
+            </Box >
+
+
+
 
             {/* sx={{
                 boxShadow: "0px 4px 30px 0px #0000001A",

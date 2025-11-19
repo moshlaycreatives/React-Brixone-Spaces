@@ -15,6 +15,8 @@ import Brochure from "../Pages/Brochure/Brochure";
 import Blog from "../Pages/Blog/Blog";
 import Testimonial from "../Pages/Testimonial/Testimonial";
 import AddBlog from "../Pages/Blog/AddBlog";
+import AddTestimonial from "../Pages/Testimonial/AddTestimonial";
+import AddProperty from "../Pages/Properties/AddProperty";
 
 
 
@@ -65,7 +67,9 @@ const AdminPortal = () => {
                     <Route path="brochure" element={<Brochure />} />
                     <Route path="blog" element={<Blog />} />
                     <Route path="testimonial" element={<Testimonial />} />
+                    <Route path="addtestimonial" element={<AddTestimonial />} />
                     <Route path="AddBlog" element={<AddBlog />} />
+                    <Route path="AddProperty" element={<AddProperty />} />
 
                 </Routes>
             </Root>

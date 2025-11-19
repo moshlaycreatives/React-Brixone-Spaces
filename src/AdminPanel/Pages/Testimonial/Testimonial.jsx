@@ -14,9 +14,10 @@ import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
-// import CancelRequest from "./CancelRequest";
+import DeleteTestimonial from "./DeleteTestimonial";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBinLine } from "react-icons/ri";
+
 
 
 const Data = [
@@ -38,9 +39,15 @@ const Data = [
 
 const Testimonial = () => {
     const navigate = useNavigate();
+    const [showPopup, setShowPopup] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
+
+
+    const handletestimonal = () => {
+        navigate(`/dashboard/addtestimonial`)
+    }
 
 
     const handleMenuClick = (event,) => {
@@ -53,6 +60,16 @@ const Testimonial = () => {
     };
 
 
+    const handleClosePopup = () => {
+        setShowPopup(false);
+    };
+
+    const handleDelete = () => {
+        setShowPopup(true);
+        setAnchorEl(null);
+    };
+
+
 
 
 
@@ -60,6 +77,12 @@ const Testimonial = () => {
 
     return (
         <>
+            <DeleteTestimonial
+                open={showPopup}
+                onClose={handleClosePopup}
+
+            />
+
             <Box sx={{ display: 'flex', flexFlow: "row", justifyContent: 'space-between', width: '100%', }}>
                 <Typography
                     style={{
@@ -86,7 +109,7 @@ const Testimonial = () => {
                     }}
                         variant="outlined"
                         startIcon={<AddIcon />}
-
+                        onClick={handletestimonal}
                     >Add Testimonial</Button>
                 </Box>
             </Box >
@@ -110,13 +133,13 @@ const Testimonial = () => {
                                 <TableCell style={{ fontFamily: "Outfit", fontWeight: 600, fontSize: "14px", lineHeight: "21px" }}>Client Feedback</TableCell>
                                 <TableCell style={{ fontFamily: "Outfit", fontWeight: 600, fontSize: "14px", lineHeight: "21px" }}>Date</TableCell>
                                 <TableCell style={{ fontFamily: "Outfit", fontWeight: 600, fontSize: "14px", lineHeight: "21px" }}>Action</TableCell>
-                        
+
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {Data.map((row) => (
                                 <TableRow key={row.id}>
-                                      <TableCell>{row.Id}</TableCell>
+                                    <TableCell>{row.Id}</TableCell>
                                     <TableCell>
                                         <Box sx={{ display: "flex", gap: "5px" }}>
                                             <img src="/image/name.png" style={{ width: "30px", height: "30px", borderRadius: "6px" }} />
@@ -157,8 +180,12 @@ const Testimonial = () => {
                                                 horizontal: 'left',
                                             }}
                                         >
-                                            <MenuItem>Approved</MenuItem>
-                                            <MenuItem>Decline</MenuItem>
+                                            <MenuItem sx={{ color: "#1DBE38", gap: "5px" }}>
+                                                <FaEdit fontSize="20px" sx={{ mr: 1 }} />
+                                                Edit</MenuItem>
+                                            <MenuItem onClick={handleDelete} sx={{ color: "#ED4040", gap: "5px" }}>
+                                                <RiDeleteBinLine fontSize="20px" sx={{}} />
+                                                Delete</MenuItem>
 
                                         </Menu>
                                     </TableCell>
