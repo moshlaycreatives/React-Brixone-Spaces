@@ -183,18 +183,7 @@ const SoldOut = () => {
                                                     Ahmedabad
                                                 </Typography>
                                             </Typography>
-                                            <Box sx={{ display: 'flex', gap: "10px" }}>
-                                                <Typography style={{
-                                                    fontFamily: "Outfit",
-                                                    fontWeight: 400,
-                                                    fontSize: "18px",
-                                                    color: "#2A6BE5",
-                                                    margin: "25px 10px 0px 0px"
-
-                                                }}>
-                                                    Edit
-                                                </Typography>
-                                            </Box>
+                                          
                                         </Box>
                                     </Box>
                                 </Grid>
