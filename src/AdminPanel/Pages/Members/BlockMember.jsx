@@ -3,34 +3,41 @@ import { useState } from "react";
 import { Box, Button, Modal, Typography, Divider, TextField, Grid } from "@mui/material";
 import useStyles from "../Testimonial/PopupStyle";
 import { useNavigate } from "react-router-dom";
-// import { endpoints } from "../../../apiEndpoints";
-// import axios from "axios";
-// import toast from "react-hot-toast";
+import { endpoints } from "../../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
 
-const BlockMember = ({ open, onClose, }) => {
+const BlockMember = ({ open, onClose, userId, onDelete }) => {
     const classes = useStyles();
 
 
 
 
-    // const DeleteProduct = async () => {
-    //     try {
-    //         const token = localStorage.getItem('token');
-    //         const response = await axios.delete(`${endpoints.SellerDeleteProduct}${userId}`, {
-    //             headers: { Authorization: `Bearer ${token}` }
-    //         });
+    const BlockMember = async () => {
+        try {
+            const token = localStorage.getItem('token');
 
-    //         toast.success(response.data.message);
-    //         onClose();
-    //         onDeleteProductSuccess();
-    //     } catch (error) {
+            const response = await axios.patch(
+                `${endpoints.MemberApi}/${userId}/block-toggle`,
+                null, // no body
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
 
-    //         toast.error(error.response?.data?.message || "An error occurred");
-    //     }
-    // };
+            toast.success(response.data.message);
+            onClose();
+            onDelete();
+        } catch (error) {
+            toast.error(error.response?.data?.message);
+        }
+    };
+
 
 
 
@@ -123,7 +130,7 @@ const BlockMember = ({ open, onClose, }) => {
                         margin: "20px 0px 30px 0px",
                         textTransform: "none"
                     }}
-                    // onClick={DeleteProduct}
+                        onClick={BlockMember}
                     >
                         Block
                     </Button>

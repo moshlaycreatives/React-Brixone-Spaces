@@ -3,36 +3,34 @@ import { useState } from "react";
 import { Box, Button, Modal, Typography, Divider, TextField, Grid } from "@mui/material";
 import useStyles from "./PopupStyle";
 import { useNavigate } from "react-router-dom";
-// import { endpoints } from "../../../apiEndpoints";
-// import axios from "axios";
-// import toast from "react-hot-toast";
+import { endpoints } from "../../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
 
-const DeleteTestimonial = ({ open, onClose, userId }) => {
+
+const DeleteTestimonial = ({ open, onClose, userId, OnDelete }) => {
     const classes = useStyles();
 
 
-    console.log("this is user id", userId)
 
+    const DeleteProduct = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.delete(`${endpoints.TestimonialsApi}/${userId}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
 
+            toast.success(response.data.message);
+            onClose();
+            OnDelete();
+        } catch (error) {
 
-    // const DeleteProduct = async () => {
-    //     try {
-    //         const token = localStorage.getItem('token');
-    //         const response = await axios.delete(`${endpoints.SellerDeleteProduct}${userId}`, {
-    //             headers: { Authorization: `Bearer ${token}` }
-    //         });
-
-    //         toast.success(response.data.message);
-    //         onClose();
-    //         onDeleteProductSuccess();
-    //     } catch (error) {
-
-    //         toast.error(error.response?.data?.message || "An error occurred");
-    //     }
-    // };
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    };
 
 
 
@@ -125,7 +123,7 @@ const DeleteTestimonial = ({ open, onClose, userId }) => {
                         margin: "20px 0px 30px 0px",
                         textTransform: "none"
                     }}
-                    // onClick={DeleteProduct}
+                        onClick={DeleteProduct}
                     >
                         Delete
                     </Button>

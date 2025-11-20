@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Box, Typography, Button, Grid, Divider, TextField } from "@mui/material";
+import { Box, Typography, Button, Grid, Divider, TextField, CircularProgress } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
 import { endpoints } from "../../../endpoint";
 import axios from "axios";
 import toast from "react-hot-toast";
-
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -25,30 +25,110 @@ const VisuallyHiddenInput = styled('input')({
 
 
 const AddTestimonial = () => {
-    const [image, setImage] = useState(null);
+    const navigate = useNavigate();
+    const [userImagePreview, setUserImagePreview] = useState(null);
+    const [propertyImagePreview, setPropertyImagePreview] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [formData, setformData] = useState({
+        userImage: null,
+        fullName: "",
+        designation: "",
+        propertyImage: null,
+        clientFeedback: ""
+    });
 
-    const handleImageChange = (event) => {
+
+
+    const handleNavigate = () => {
+        navigate(`/dashboard/testimonial`)
+    }
+
+    const handleUserImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
-            setImage(URL.createObjectURL(event.target.files[0]));
+            const file = event.target.files[0];
+            setUserImagePreview(URL.createObjectURL(file));
+            setformData((prev) => ({
+                ...prev,
+                userImage: file
+            }));
         }
+    };
+
+    const handlePropertyImageChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+            setPropertyImagePreview(URL.createObjectURL(file));
+            setformData((prev) => ({
+                ...prev,
+                propertyImage: file
+            }));
+        }
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setformData((prev) => ({
+            ...prev,
+            [name]: value
+        }));
     };
 
 
 
-    // const CreateTestimonial = async () => {
-    //     try {
-    //         const token = localStorage.getItem('token');
-    //         const response = await axios.get(`${endpoints.AdminGetReview}`, {
-    //             headers: { Authorization: `Bearer ${token}` }
-    //         });
+    const CreateTestimonial = async () => {
+        if (loading) {
+            return;
+        }
 
+        try {
+            if (!formData.userImage) {
+                toast.error("Please upload user image");
+                return;
+            }
+            if (!formData.fullName.trim()) {
+                toast.error("Please enter full name");
+                return;
+            }
+            if (!formData.propertyImage) {
+                toast.error("Please upload property image");
+                return;
+            }
 
-    //         toast.success(response.data.message);
-    //     } catch (error) {
+            setLoading(true);
+            const token = localStorage.getItem('token');
 
-    //         toast.error(error.response?.data?.message || "An error occurred");
-    //     }
-    // };
+            // Create FormData for file upload
+            const submitData = new FormData();
+            submitData.append('userImage', formData.userImage);
+            submitData.append('fullName', formData.fullName);
+            submitData.append('designation', formData.designation);
+            submitData.append('propertyImage', formData.propertyImage);
+            submitData.append('clientFeedback', formData.clientFeedback);
+
+            const response = await axios.post(`${endpoints.TestimonialsApi}`, submitData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            toast.success(response.data.message || "Testimonial added successfully");
+            handleNavigate();
+            setformData({
+                userImage: null,
+                fullName: "",
+                designation: "",
+                propertyImage: null,
+                clientFeedback: ""
+            });
+            setUserImagePreview(null);
+            setPropertyImagePreview(null);
+        } catch (error) {
+            toast.error(error.response?.data?.message || "An error occurred");
+        } finally {
+            setLoading(false);
+        }
+    };
 
 
     return (
@@ -109,7 +189,8 @@ const AddTestimonial = () => {
                                 <Grid size={{ xs: 12, md: 7 }}>
                                     <Box
                                         sx={{
-                                            height: "200px",
+                                            height: "250px",
+                                            width: "100%",
                                             backgroundColor: "#F4F4F4",
                                             border: '2px dashed grey',
                                             borderRadius: 2,
@@ -120,18 +201,20 @@ const AddTestimonial = () => {
                                             cursor: 'pointer',
                                             position: 'relative',
                                             minHeight: '200px',
+                                            overflow: 'hidden',
                                         }}
                                         component="label"
-                                        htmlFor="file-upload"
+                                        htmlFor="user-image-upload"
                                     >
-                                        {image ? (
+                                        {userImagePreview ? (
                                             <img
-                                                src={image}
-                                                alt="Category"
+                                                src={userImagePreview}
+                                                alt="User"
                                                 style={{
-                                                    maxWidth: '100%',
-                                                    borderRadius: "15px",
+                                                    width: '100%',
+                                                    height: '100%',
                                                     objectFit: 'cover',
+                                                    display: 'block',
                                                 }}
                                             />
                                         ) : (
@@ -140,7 +223,7 @@ const AddTestimonial = () => {
                                                 <Typography>Upload Image</Typography>
                                             </>
                                         )}
-                                        <VisuallyHiddenInput id="file-upload" type="file" onChange={handleImageChange} />
+                                        <VisuallyHiddenInput id="user-image-upload" type="file" accept="image/*" onChange={handleUserImageChange} />
                                     </Box>
                                 </Grid>
                             </Grid>
@@ -163,8 +246,9 @@ const AddTestimonial = () => {
                                     <TextField
                                         fullWidth
                                         placeholder="Enter full name"
-                                        // value={vehicleModel}
-                                        // onChange={(e) => setVehicleModel(e.target.value)}
+                                        name="fullName"
+                                        value={formData.fullName}
+                                        onChange={handleInputChange}
                                         sx={{
                                             "& .MuiOutlinedInput-root": {
                                                 borderRadius: "10px",
@@ -196,8 +280,9 @@ const AddTestimonial = () => {
                                     <TextField
                                         fullWidth
                                         placeholder="Enter designation"
-                                        // value={vehicleModel}
-                                        // onChange={(e) => setVehicleModel(e.target.value)}
+                                        name="designation"
+                                        value={formData.designation}
+                                        onChange={handleInputChange}
                                         sx={{
                                             "& .MuiOutlinedInput-root": {
                                                 borderRadius: "10px",
@@ -239,7 +324,8 @@ const AddTestimonial = () => {
 
                                     <Box
                                         sx={{
-                                            height: "200px",
+                                            height: "250px",
+                                            width: "100%",
                                             backgroundColor: "#F4F4F4",
                                             border: '2px dashed grey',
                                             borderRadius: 2,
@@ -250,18 +336,20 @@ const AddTestimonial = () => {
                                             cursor: 'pointer',
                                             position: 'relative',
                                             minHeight: '200px',
+                                            overflow: 'hidden',
                                         }}
                                         component="label"
-                                        htmlFor="file-upload"
+                                        htmlFor="property-image-upload"
                                     >
-                                        {image ? (
+                                        {propertyImagePreview ? (
                                             <img
-                                                src={image}
-                                                alt="Category"
+                                                src={propertyImagePreview}
+                                                alt="Property"
                                                 style={{
-                                                    maxWidth: '100%',
-                                                    borderRadius: "15px",
+                                                    width: '100%',
+                                                    height: '100%',
                                                     objectFit: 'cover',
+                                                    display: 'block',
                                                 }}
                                             />
                                         ) : (
@@ -270,7 +358,7 @@ const AddTestimonial = () => {
                                                 <Typography>Upload Image</Typography>
                                             </>
                                         )}
-                                        <VisuallyHiddenInput id="file-upload" type="file" onChange={handleImageChange} />
+                                        <VisuallyHiddenInput id="property-image-upload" type="file" accept="image/*" onChange={handlePropertyImageChange} />
                                     </Box>
                                 </Grid>
                             </Grid>
@@ -293,10 +381,12 @@ const AddTestimonial = () => {
                                     <TextField
                                         fullWidth
                                         placeholder="Enter client feedback"
+                                        name="clientFeedback"
+                                        value={formData.clientFeedback}
+                                        onChange={handleInputChange}
                                         multiline
                                         rows={4}
-                                        // value={vehicleModel}
-                                        // onChange={(e) => setVehicleModel(e.target.value)}
+
                                         sx={{
                                             "& .MuiOutlinedInput-root": {
                                                 borderRadius: "10px",
@@ -334,7 +424,7 @@ const AddTestimonial = () => {
                                         borderRadius: "10px"
                                     }}
                                         variant="outlined"
-
+                                        onClick={CreateTestimonial}
                                     >Add Testimonial</Button>
                                 </Grid>
                             </Grid>

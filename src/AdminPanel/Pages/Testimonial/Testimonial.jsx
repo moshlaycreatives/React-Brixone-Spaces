@@ -56,8 +56,8 @@ const Testimonial = () => {
         navigate(`/dashboard/addtestimonial`)
     }
 
-    const handleEdittestimonal = () => {
-        navigate(`/dashboard/EditTestimonail`)
+    const handleEdittestimonal = (id) => {
+        navigate(`/dashboard/EditTestimonail`, { state: { id } })
     }
 
 
@@ -86,24 +86,25 @@ const Testimonial = () => {
 
 
 
-    // const getAllTestimonial = async () => {
-    //     try {
-    //         const token = localStorage.getItem('token');
-    //         const response = await axios.get(`${endpoints.AdminGetReview}`, {
-    //             headers: { Authorization: `Bearer ${token}` }
-    //         });
+    const getAllTestimonial = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`${endpoints.TestimonialsApi}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
 
-    //         setTestimonialData(response.data.data);
-    //         toast.success(response.data.message);
-    //     } catch (error) {
-    //         setTestimonialData([]);
-    //         toast.error(error.response?.data?.message || "An error occurred");
-    //     }
-    // };
+            setTestimonialData(response.data.data.testimonials);
+            toast.success(response.data.message);
+        } catch (error) {
+            setTestimonialData([]);
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    };
 
-    // useEffect(() => {
-    //     getAllTestimonial();
-    // }, []);
+    useEffect(() => {
+        getAllTestimonial();
+    }, []);
+
 
 
 
@@ -115,6 +116,7 @@ const Testimonial = () => {
                 open={showPopup}
                 onClose={handleClosePopup}
                 userId={selectedUserId}
+                OnDelete={getAllTestimonial}
             />
 
             <Box sx={{ display: 'flex', flexFlow: "row", justifyContent: 'space-between', width: '100%', }}>
@@ -171,25 +173,25 @@ const Testimonial = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {Data.map((row) => (
+                            {TestimonialData?.map((row) => (
                                 <TableRow key={row.id}>
-                                    <TableCell>{row.Id}</TableCell>
+                                    <TableCell>{row.customId}</TableCell>
                                     <TableCell>
                                         <Box sx={{ display: "flex", gap: "5px" }}>
-                                            <img src="/image/name.png" style={{ width: "30px", height: "30px", borderRadius: "6px" }} />
-                                            {row.FullName}
+                                            <img src={row.userImage} style={{ width: "30px", height: "30px", borderRadius: "6px" }} />
+                                            {row.fullName}
                                         </Box>
 
                                     </TableCell>
 
-                                    <TableCell>{row.Designation}</TableCell>
+                                    <TableCell>{row.designation}</TableCell>
                                     <TableCell>
                                         <Box sx={{ display: "flex", gap: "5px" }}>
-                                            <img src="/image/Blogimage.jpg" style={{ width: "30px", height: "30px", borderRadius: "6px" }} />
+                                            <img src={row.propertyImage} style={{ width: "108px", height: "69px", borderRadius: "6px" }} />
                                         </Box>
                                     </TableCell>
-                                    <TableCell>{row.Review}</TableCell>
-                                    <TableCell>{row.Date}</TableCell>
+                                    <TableCell>{row.clientFeedback}</TableCell>
+                                    <TableCell>{row?.createdAt ? new Date(row.createdAt).toLocaleDateString() : "N/A"}</TableCell>
                                     <TableCell>
                                         <IconButton
                                             aria-controls={open ? 'demo-positioned-menu' : undefined}

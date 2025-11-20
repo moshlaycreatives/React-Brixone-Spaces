@@ -8,7 +8,10 @@ export const endpoints = {
     userRegister: `${BASE_URL}/auth/register`,
     ForgotPassword: `${BASE_URL}/auth/forgot-password`,
     OtPVerify: `${BASE_URL}/auth/verify-otp`,
-    AddNewPassword: `${BASE_URL}/auth/reset-password`
+    AddNewPassword: `${BASE_URL}/auth/reset-password`,
+    TestimonialsApi: `${BASE_URL}/testimonials`,
+    MemberApi: `${BASE_URL}/users`,
+
 
 
 }

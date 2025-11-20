@@ -17,6 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 import DeleteMember from "./DeleteMember";
 import BlockMember from "./BlockMember";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { MdBlockFlipped } from "react-icons/md";
 import { endpoints } from "../../../endpoint";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -139,40 +140,41 @@ const Members = () => {
 
 
 
-    // const getMember = async () => {
-    //     try {
-    //         const token = localStorage.getItem('token');
-    //         const response = await axios.get(`${endpoints.AdminGetReview}`, {
-    //             headers: { Authorization: `Bearer ${token}` }
-    //         });
+    const getMember = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`${endpoints.MemberApi}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
 
-    //         setmemberData(response.data.data);
-    //         toast.success(response.data.message);
-    //     } catch (error) {
-    //         setmemberData([]);
-    //         toast.error(error.response?.data?.message || "An error occurred");
-    //     }
-    // };
+            setmemberData(response.data.data.users);
+            toast.success(response.data.message);
+        } catch (error) {
+            setmemberData([]);
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    };
 
-    // useEffect(() => {
-    //     getMember();
-    // }, []);
+    useEffect(() => {
+        getMember();
+    }, []);
 
 
 
 
     return (
         <>
-
             <DeleteMember
                 open={showPopup}
                 onClose={handleClosePopup}
                 userId={selectedUserId}
+                onDelete={getMember}
             />
             <BlockMember
                 open={BlockPopup}
                 onClose={handleCloseBlockPopup}
                 userId={selectedUserId}
+                onDelete={getMember}
             />
 
             <Box>
@@ -210,13 +212,13 @@ const Members = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {Data.map((row) => (
+                            {memberData?.map((row) => (
                                 <TableRow key={row.id}>
-                                    <TableCell>{row.Id}</TableCell>
-                                    <TableCell>{row.UserName}</TableCell>
-                                    <TableCell>{row.Email}</TableCell>
-                                    <TableCell>{row.Phone}</TableCell>
-                                    <TableCell>{row.Date}</TableCell>
+                                    <TableCell>{row.customId}</TableCell>
+                                    <TableCell>{row.fullName}</TableCell>
+                                    <TableCell>{row.email}</TableCell>
+                                    <TableCell>{row.phoneNumber}</TableCell>
+                                    <TableCell>{row?.createdAt ? new Date(row.createdAt).toLocaleDateString() : "N/A"}</TableCell>
                                     <TableCell>
                                         <IconButton
                                             aria-controls={open ? 'demo-positioned-menu' : undefined}
@@ -242,9 +244,11 @@ const Members = () => {
                                             }}
                                         >
 
-                                            <MenuItem onClick={() => handleBlock(row._id)}>Block</MenuItem>
+                                            <MenuItem onClick={() => handleBlock(row._id)} sx={{ color: "#ED4040", gap: "5px" }}>
+                                                <MdBlockFlipped fontSize="20px" />
+                                                Block</MenuItem>
                                             <MenuItem onClick={() => handleDelete(row._id)} sx={{ color: "#ED4040", gap: "5px" }}>
-                                                <RiDeleteBinLine fontSize="20px" sx={{}} />
+                                                <RiDeleteBinLine fontSize="20px" />
                                                 Delete</MenuItem>
 
                                         </Menu>

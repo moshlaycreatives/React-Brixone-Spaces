@@ -50,7 +50,11 @@ const Login = () => {
                 email: email,
                 password: password,
             });
+            if (response.status === 200) {
 
+                localStorage.setItem("token", response.data.data.accessToken);
+
+            }
             toast.success(response.data.message);
         } catch (error) {
             toast.error(error.response?.data?.message || "An error occurred");

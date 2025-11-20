@@ -3,34 +3,34 @@ import { useState } from "react";
 import { Box, Button, Modal, Typography, Divider, TextField, Grid } from "@mui/material";
 import useStyles from "../Testimonial/PopupStyle";
 import { useNavigate } from "react-router-dom";
-// import { endpoints } from "../../../apiEndpoints";
-// import axios from "axios";
-// import toast from "react-hot-toast";
+import { endpoints } from "../../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
 
-const DeleteMember = ({ open, onClose, }) => {
+const DeleteMember = ({ open, onClose, userId, onDelete }) => {
     const classes = useStyles();
 
 
 
 
-    // const DeleteProduct = async () => {
-    //     try {
-    //         const token = localStorage.getItem('token');
-    //         const response = await axios.delete(`${endpoints.SellerDeleteProduct}${userId}`, {
-    //             headers: { Authorization: `Bearer ${token}` }
-    //         });
+    const Deletemember = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.delete(`${endpoints.MemberApi}/${userId}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
 
-    //         toast.success(response.data.message);
-    //         onClose();
-    //         onDeleteProductSuccess();
-    //     } catch (error) {
+            toast.success(response.data.message);
+            onClose();
+            onDelete();
+        } catch (error) {
 
-    //         toast.error(error.response?.data?.message || "An error occurred");
-    //     }
-    // };
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    };
 
 
 
@@ -123,7 +123,7 @@ const DeleteMember = ({ open, onClose, }) => {
                         margin: "20px 0px 30px 0px",
                         textTransform: "none"
                     }}
-                    // onClick={DeleteProduct}
+                        onClick={Deletemember}
                     >
                         Delete
                     </Button>
