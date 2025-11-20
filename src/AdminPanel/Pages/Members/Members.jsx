@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, useStepContext } from "@mui/material";
 import {
     Table,
     TableBody,
@@ -17,7 +17,9 @@ import MenuItem from '@mui/material/MenuItem';
 import DeleteMember from "./DeleteMember";
 import BlockMember from "./BlockMember";
 import { RiDeleteBinLine } from "react-icons/ri";
-
+import { endpoints } from "../../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
@@ -88,22 +90,25 @@ const Data = [
 
 const Members = () => {
     const navigate = useNavigate();
+    const [memberData, setmemberData] = useState();
     const [anchorEl, setAnchorEl] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
     const [BlockPopup, setBlockPopup] = useState(false);
-
+    const [menuUserId, setMenuUserId] = useState(null);
+    const [selectedUserId, setSelectedUserId] = useState(null);
 
     const open = Boolean(anchorEl);
 
 
 
-    const handleMenuClick = (event,) => {
+    const handleMenuClick = (event, userId) => {
         setAnchorEl(event.currentTarget);
-
+        setMenuUserId(userId);
     };
 
     const handleClose = () => {
         setAnchorEl(null);
+        setMenuUserId(null);
     };
 
 
@@ -113,21 +118,45 @@ const Members = () => {
 
     const handleClosePopup = () => {
         setShowPopup(false);
+        setSelectedUserId(null);
     };
     const handleCloseBlockPopup = () => {
         setBlockPopup(false);
+        setSelectedUserId(null);
     };
 
-    const handleDelete = () => {
-        setAnchorEl(null);
+    const handleDelete = (userId) => {
         setShowPopup(true);
+        setAnchorEl(null);
+        setSelectedUserId(userId);
     };
-    const handleBlock = () => {
+    const handleBlock = (userId) => {
         setAnchorEl(null);
         setBlockPopup(true);
+        setSelectedUserId(userId);
     };
 
 
+
+
+    // const getMember = async () => {
+    //     try {
+    //         const token = localStorage.getItem('token');
+    //         const response = await axios.get(`${endpoints.AdminGetReview}`, {
+    //             headers: { Authorization: `Bearer ${token}` }
+    //         });
+
+    //         setmemberData(response.data.data);
+    //         toast.success(response.data.message);
+    //     } catch (error) {
+    //         setmemberData([]);
+    //         toast.error(error.response?.data?.message || "An error occurred");
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     getMember();
+    // }, []);
 
 
 
@@ -138,12 +167,12 @@ const Members = () => {
             <DeleteMember
                 open={showPopup}
                 onClose={handleClosePopup}
-
+                userId={selectedUserId}
             />
             <BlockMember
                 open={BlockPopup}
                 onClose={handleCloseBlockPopup}
-
+                userId={selectedUserId}
             />
 
             <Box>
@@ -201,7 +230,7 @@ const Members = () => {
                                             id="demo-positioned-menu"
                                             aria-labelledby="demo-positioned-button"
                                             anchorEl={anchorEl}
-                                            open={open}
+                                            open={open && menuUserId === row._id}
                                             onClose={handleClose}
                                             anchorOrigin={{
                                                 vertical: 'top',
@@ -213,8 +242,8 @@ const Members = () => {
                                             }}
                                         >
 
-                                            <MenuItem onClick={handleBlock}>Block</MenuItem>
-                                            <MenuItem onClick={handleDelete} sx={{ color: "#ED4040", gap: "5px" }}>
+                                            <MenuItem onClick={() => handleBlock(row._id)}>Block</MenuItem>
+                                            <MenuItem onClick={() => handleDelete(row._id)} sx={{ color: "#ED4040", gap: "5px" }}>
                                                 <RiDeleteBinLine fontSize="20px" sx={{}} />
                                                 Delete</MenuItem>
 

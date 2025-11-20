@@ -3,16 +3,15 @@ import { useState } from "react";
 import { Box, Button, Modal, Typography, Divider, TextField, Grid } from "@mui/material";
 import useStyles from "../Testimonial/PopupStyle";
 import { useNavigate } from "react-router-dom";
-// import { endpoints } from "../../../apiEndpoints";
-// import axios from "axios";
-// import toast from "react-hot-toast";
+import { endpoints } from "../../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
 
-const DeleteTour = ({ open, onClose, }) => {
+const DeleteTour = ({ open, onClose, userId }) => {
     const classes = useStyles();
-
 
 
 

@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Box, Typography, Button, Grid, Divider, TextField } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
-
+import { endpoints } from "../../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
@@ -30,6 +32,25 @@ const AddTestimonial = () => {
             setImage(URL.createObjectURL(event.target.files[0]));
         }
     };
+
+
+
+    // const CreateTestimonial = async () => {
+    //     try {
+    //         const token = localStorage.getItem('token');
+    //         const response = await axios.get(`${endpoints.AdminGetReview}`, {
+    //             headers: { Authorization: `Bearer ${token}` }
+    //         });
+
+
+    //         toast.success(response.data.message);
+    //     } catch (error) {
+
+    //         toast.error(error.response?.data?.message || "An error occurred");
+    //     }
+    // };
+
+
     return (
         <>
             <Box sx={{ display: 'flex', flexFlow: "row", justifyContent: 'space-between', width: '100%', }}>
@@ -37,7 +58,7 @@ const AddTestimonial = () => {
                     sx={{
                         fontFamily: "Outfit",
                         fontWeight: 600,
-                        fontSize: {xs:"18px", md:"36px"},
+                        fontSize: { xs: "18px", md: "36px" },
                         color: "#202020",
                     }}>
                     Dashboard / Testimonial /<span style={{ color: "#4079ED" }}> Add New Testimonial</span>
@@ -126,7 +147,7 @@ const AddTestimonial = () => {
 
                         </Box>
 
-                        <Box mt={2} sx={{ padding:  "0px 20px 10px 20px" }}>
+                        <Box mt={2} sx={{ padding: "0px 20px 10px 20px" }}>
                             <Grid container spacing={2}>
                                 <Grid size={{ xs: 12, md: 12 }}>
                                     <Typography style={{

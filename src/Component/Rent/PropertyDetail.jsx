@@ -1,6 +1,11 @@
 import { Box, Typography, Button, Grid, Divider, TextField } from "@mui/material";
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import ShareIcon from '@mui/icons-material/Share';
+import BedOutlinedIcon from '@mui/icons-material/BedOutlined';
+import { endpoints } from "../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 
 
 const PropertyDetail = () => {
@@ -208,7 +213,6 @@ const PropertyDetail = () => {
 
             </Box>
 
-
             <Box sx={{ mt: "30px", px: { xs: "20px", md: "75px" } }}>
                 <Grid container spacing={2}>
                     {[
@@ -333,6 +337,41 @@ const PropertyDetail = () => {
                                 Property Overview
                             </Typography>
                         </Box>
+
+                        <Box>
+
+                            <Grid container spacing={2} mt={3}>
+                                <Grid size={{ xs: 6, sm: 4, md: 2 }}>
+                                    <Box sx={{ border: "1px solid #676767", width: "100%", height: "100px", borderRadius: "10px", padding: "10px" }}>
+                                        <BedOutlinedIcon style={{ color: "#676767", fontSize: "40px" }} />
+                                        <Typography sx={{
+                                            fontFamily: "Afacad",
+                                            fontWeight: 400,
+                                            fontSize: "16px",
+                                            color: "#676767",
+                                            marginTop: "30px",
+                                            display: "flex",
+                                            justifyContent: "flex-end"
+                                        }}>
+                                            Bedrooms: 4
+                                        </Typography>
+                                    </Box>
+                                </Grid>
+
+                            </Grid>
+
+
+                        </Box>
+
+
+
+
+
+
+
+
+
+
 
 
                         <Box>
@@ -638,7 +677,7 @@ const PropertyDetail = () => {
                                         borderRadius: "10px"
                                     }}
                                         variant="outlined"
-                                       
+
                                     >Book Now</Button>
                                 </Grid>
 

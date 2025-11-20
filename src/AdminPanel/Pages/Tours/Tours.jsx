@@ -16,7 +16,9 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import DeleteTour from "./DeleteTour";
 import { RiDeleteBinLine } from "react-icons/ri";
-
+import { endpoints } from "../../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 
@@ -94,7 +96,10 @@ const Data = [
 
 const Tours = () => {
     const navigate = useNavigate();
+    const [TourData, setTourData] = useState();
     const [anchorEl, setAnchorEl] = useState(null);
+    const [menuUserId, setMenuUserId] = useState(null);
+    const [selectedUserId, setSelectedUserId] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
 
 
@@ -102,27 +107,26 @@ const Tours = () => {
 
 
 
-    const handleMenuClick = (event,) => {
+    const handleMenuClick = (event, userId) => {
         setAnchorEl(event.currentTarget);
-
+        setMenuUserId(userId);
     };
 
     const handleClose = () => {
         setAnchorEl(null);
+        setMenuUserId(null);
     };
-
-
-
-
 
 
     const handleClosePopup = () => {
         setShowPopup(false);
+        setSelectedUserId(null);
     };
 
-    const handleDelete = () => {
-        setAnchorEl(null);
+    const handleDelete = (userId) => {
         setShowPopup(true);
+        setAnchorEl(null);
+        setSelectedUserId(userId);
     };
 
 
@@ -135,7 +139,7 @@ const Tours = () => {
             <DeleteTour
                 open={showPopup}
                 onClose={handleClosePopup}
-
+                userId={selectedUserId}
             />
 
 
@@ -196,7 +200,7 @@ const Tours = () => {
                                             id="demo-positioned-menu"
                                             aria-labelledby="demo-positioned-button"
                                             anchorEl={anchorEl}
-                                            open={open}
+                                            open={open && menuUserId === row._id}
                                             onClose={handleClose}
                                             anchorOrigin={{
                                                 vertical: 'top',
@@ -207,7 +211,7 @@ const Tours = () => {
                                                 horizontal: 'left',
                                             }}
                                         >
-                                            <MenuItem onClick={handleDelete} sx={{ color: "#ED4040", gap: "5px" }}>
+                                            <MenuItem onClick={() => handleDelete(row._id)} sx={{ color: "#ED4040", gap: "5px" }}>
                                                 <RiDeleteBinLine fontSize="20px" sx={{}} />
                                                 Delete</MenuItem>
                                         </Menu>

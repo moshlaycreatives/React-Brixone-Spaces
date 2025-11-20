@@ -10,9 +10,11 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const DeleteTestimonial = ({ open, onClose, }) => {
+const DeleteTestimonial = ({ open, onClose, userId }) => {
     const classes = useStyles();
 
+
+    console.log("this is user id", userId)
 
 
 

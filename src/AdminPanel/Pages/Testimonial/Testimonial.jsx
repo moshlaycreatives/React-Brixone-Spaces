@@ -17,6 +17,10 @@ import MenuItem from '@mui/material/MenuItem';
 import DeleteTestimonial from "./DeleteTestimonial";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { endpoints } from "../../../endpoint";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 
 
 
@@ -39,8 +43,11 @@ const Data = [
 
 const Testimonial = () => {
     const navigate = useNavigate();
+    const [TestimonialData, setTestimonialData] = useState();
     const [showPopup, setShowPopup] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [menuUserId, setMenuUserId] = useState(null);
+    const [selectedUserId, setSelectedUserId] = useState(null);
     const open = Boolean(anchorEl);
 
 
@@ -49,27 +56,54 @@ const Testimonial = () => {
         navigate(`/dashboard/addtestimonial`)
     }
 
+    const handleEdittestimonal = () => {
+        navigate(`/dashboard/EditTestimonail`)
+    }
 
-    const handleMenuClick = (event,) => {
+
+    const handleMenuClick = (event, userId) => {
         setAnchorEl(event.currentTarget);
-
+        setMenuUserId(userId);
     };
 
     const handleClose = () => {
         setAnchorEl(null);
+        setMenuUserId(null);
     };
 
 
     const handleClosePopup = () => {
         setShowPopup(false);
+        setSelectedUserId(null);
     };
 
-    const handleDelete = () => {
+    const handleDelete = (userId) => {
         setShowPopup(true);
         setAnchorEl(null);
+        setSelectedUserId(userId);
     };
 
 
+
+
+    // const getAllTestimonial = async () => {
+    //     try {
+    //         const token = localStorage.getItem('token');
+    //         const response = await axios.get(`${endpoints.AdminGetReview}`, {
+    //             headers: { Authorization: `Bearer ${token}` }
+    //         });
+
+    //         setTestimonialData(response.data.data);
+    //         toast.success(response.data.message);
+    //     } catch (error) {
+    //         setTestimonialData([]);
+    //         toast.error(error.response?.data?.message || "An error occurred");
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     getAllTestimonial();
+    // }, []);
 
 
 
@@ -80,7 +114,7 @@ const Testimonial = () => {
             <DeleteTestimonial
                 open={showPopup}
                 onClose={handleClosePopup}
-
+                userId={selectedUserId}
             />
 
             <Box sx={{ display: 'flex', flexFlow: "row", justifyContent: 'space-between', width: '100%', }}>
@@ -169,7 +203,7 @@ const Testimonial = () => {
                                             id="demo-positioned-menu"
                                             aria-labelledby="demo-positioned-button"
                                             anchorEl={anchorEl}
-                                            open={open}
+                                            open={open && menuUserId === row._id}
                                             onClose={handleClose}
                                             anchorOrigin={{
                                                 vertical: 'top',
@@ -180,10 +214,10 @@ const Testimonial = () => {
                                                 horizontal: 'left',
                                             }}
                                         >
-                                            <MenuItem sx={{ color: "#1DBE38", gap: "5px" }}>
+                                            <MenuItem onClick={() => handleEdittestimonal(row._id)} sx={{ color: "#1DBE38", gap: "5px" }}>
                                                 <FaEdit fontSize="20px" sx={{ mr: 1 }} />
                                                 Edit</MenuItem>
-                                            <MenuItem onClick={handleDelete} sx={{ color: "#ED4040", gap: "5px" }}>
+                                            <MenuItem onClick={() => handleDelete(row._id)} sx={{ color: "#ED4040", gap: "5px" }}>
                                                 <RiDeleteBinLine fontSize="20px" sx={{}} />
                                                 Delete</MenuItem>
 
