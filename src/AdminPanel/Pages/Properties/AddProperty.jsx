@@ -45,7 +45,6 @@ const AddProperty = () => {
     const [hasBasement, setHasBasement] = useState(false);
     const [basementImage, setBasementImage] = useState(null);
     const [basementDescription, setBasementDescription] = useState('');
-
     const [LocalData, setLocalData] = useState({});
 
     const handleInputChange = (event, label) => {
@@ -115,6 +114,23 @@ const AddProperty = () => {
             ...prev,
             [floorNumber]: value
         }));
+    };
+
+    // Check if a floor is completed (has both image and description)
+    const isFloorCompleted = (floorNumber) => {
+        const hasImage = floorImages[floorNumber] && floorImages[floorNumber] !== '';
+        const hasDescription = floorDescriptions[floorNumber] && floorDescriptions[floorNumber].trim() !== '';
+        return hasImage && hasDescription;
+    };
+
+    // Check if a floor is enabled (first floor always enabled, others only if previous is completed)
+    const isFloorEnabled = (floorNumber) => {
+        if (floorNumber === 0) {
+            // First floor is always enabled
+            return true;
+        }
+        // For other floors, check if previous floor is completed
+        return isFloorCompleted(floorNumber - 1);
     };
 
     // Handler for floor selection
@@ -382,6 +398,11 @@ const AddProperty = () => {
                                         <MenuItem >
                                             Select bedrooms
                                         </MenuItem>
+                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, +10,].map((num) => (
+                                            <MenuItem key={num} value={num}>
+                                                {num} {num === 1 ? 'Bedroom' : 'Bedrooms'}
+                                            </MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -426,6 +447,11 @@ const AddProperty = () => {
                                         <MenuItem >
                                             Select bathrooms
                                         </MenuItem>
+                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, +10,].map((num) => (
+                                            <MenuItem key={num} value={num}>
+                                                {num} {num === 1 ? 'Bathroom' : 'Bathrooms'}
+                                            </MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -535,6 +561,11 @@ const AddProperty = () => {
                                         <MenuItem >
                                             Select kitchens
                                         </MenuItem>
+                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, +10,].map((num) => (
+                                            <MenuItem key={num} value={num}>
+                                                {num} {num === 1 ? 'Kitchen' : 'Kitchens'}
+                                            </MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
 
@@ -567,11 +598,16 @@ const AddProperty = () => {
                                 }}>
                                     <Select
                                         displayEmpty
-                                  
+
                                     >
                                         <MenuItem >
                                             Select store rooms
                                         </MenuItem>
+                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, +10,].map((num) => (
+                                            <MenuItem key={num} value={num}>
+                                                {num} {num === 1 ? 'Store room' : 'Store rooms'}
+                                            </MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -948,113 +984,131 @@ const AddProperty = () => {
                 {selectedFloors && parseInt(selectedFloors) > 0 && (
                     <Box sx={{ padding: "0px 20px 0px 20px" }}>
                         <Grid container spacing={2}>
-                            {Array.from({ length: parseInt(selectedFloors) }, (_, index) => (
-                                <Grid size={{ xs: 12, md: 6 }} key={index}>
-                                    <Grid container spacing={3}>
-                                        <Grid size={{ xs: 12, md: 6 }}>
-                                            <Typography style={{
-                                                fontFamily: "Outfit",
-                                                fontWeight: 400,
-                                                fontSize: "18px",
-                                                lineHeight: "31px",
-                                                color: "#202020",
-                                                margin: "20px 0px 10px 0px"
-                                            }}>
-                                                {getFloorName(index)} Plan*
-                                            </Typography>
-                                            <Box
-                                                sx={{
-                                                    height: "250px",
-                                                    width: "100%",
-                                                    backgroundColor: "#F4F4F4",
-                                                    border: '2px dashed grey',
-                                                    borderRadius: 2,
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    justifyContent: 'center',
-                                                    alignItems: 'center',
-                                                    cursor: 'pointer',
-                                                    position: 'relative',
-                                                    minHeight: '200px',
-                                                    overflow: 'hidden',
-                                                }}
-                                                component="label"
-                                                htmlFor={`floor-${index}-upload`}
-                                            >
-                                                {floorImages[index] ? (
-                                                    <Box
-                                                        sx={{
-                                                            width: '100%',
-                                                            height: '100%',
-                                                            display: 'flex',
-                                                            alignItems: 'center',
-                                                            justifyContent: 'center',
-                                                            position: 'relative',
-                                                        }}
-                                                    >
-                                                        <img
-                                                            src={floorImages[index]}
-                                                            alt={`${getFloorName(index)} Plan`}
-                                                            style={{
+                            {Array.from({ length: parseInt(selectedFloors) }, (_, index) => {
+                                const enabled = isFloorEnabled(index);
+                                return (
+                                    <Grid size={{ xs: 12, md: 6 }} key={index}>
+                                        <Grid container spacing={3}>
+                                            <Grid size={{ xs: 12, md: 6 }}>
+                                                <Typography style={{
+                                                    fontFamily: "Outfit",
+                                                    fontWeight: 400,
+                                                    fontSize: "18px",
+                                                    lineHeight: "31px",
+                                                    color: enabled ? "#202020" : "#999999",
+                                                    margin: "20px 0px 10px 0px"
+                                                }}>
+                                                    {getFloorName(index)} Plan*
+                                                    {!enabled && (
+                                                        <span style={{ fontSize: "14px", marginLeft: "8px", color: "#FF9800" }}>
+                                                            (Complete previous floor to unlock)
+                                                        </span>
+                                                    )}
+                                                </Typography>
+                                                <Box
+                                                    sx={{
+                                                        height: "250px",
+                                                        width: "100%",
+                                                        backgroundColor: enabled ? "#F4F4F4" : "#F9F9F9",
+                                                        border: `2px dashed ${enabled ? 'grey' : '#CCCCCC'}`,
+                                                        borderRadius: 2,
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        cursor: enabled ? 'pointer' : 'not-allowed',
+                                                        position: 'relative',
+                                                        minHeight: '200px',
+                                                        overflow: 'hidden',
+                                                        opacity: enabled ? 1 : 0.6,
+                                                        pointerEvents: enabled ? 'auto' : 'none',
+                                                    }}
+                                                    component={enabled ? "label" : "div"}
+                                                    htmlFor={enabled ? `floor-${index}-upload` : undefined}
+                                                >
+                                                    {floorImages[index] ? (
+                                                        <Box
+                                                            sx={{
                                                                 width: '100%',
                                                                 height: '100%',
-                                                                objectFit: 'cover',
-                                                                display: 'block',
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                justifyContent: 'center',
+                                                                position: 'relative',
                                                             }}
+                                                        >
+                                                            <img
+                                                                src={floorImages[index]}
+                                                                alt={`${getFloorName(index)} Plan`}
+                                                                style={{
+                                                                    width: '100%',
+                                                                    height: '100%',
+                                                                    objectFit: 'cover',
+                                                                    display: 'block',
+                                                                }}
+                                                            />
+                                                        </Box>
+                                                    ) : (
+                                                        <>
+                                                            <CloudUploadIcon sx={{ fontSize: 60, color: enabled ? 'grey.500' : '#CCCCCC' }} />
+                                                            <Typography sx={{ color: enabled ? '#202020' : '#999999' }}>
+                                                                {enabled ? 'Upload Image' : 'Locked'}
+                                                            </Typography>
+                                                        </>
+                                                    )}
+                                                    {enabled && (
+                                                        <VisuallyHiddenInput
+                                                            id={`floor-${index}-upload`}
+                                                            type="file"
+                                                            accept="image/*"
+                                                            onChange={(e) => handleFloorImageChange(index, e)}
                                                         />
-                                                    </Box>
-                                                ) : (
-                                                    <>
-                                                        <CloudUploadIcon sx={{ fontSize: 60, color: 'grey.500' }} />
-                                                        <Typography>Upload Image</Typography>
-                                                    </>
-                                                )}
-                                                <VisuallyHiddenInput
-                                                    id={`floor-${index}-upload`}
-                                                    type="file"
-                                                    accept="image/*"
-                                                    onChange={(e) => handleFloorImageChange(index, e)}
+                                                    )}
+                                                </Box>
+                                            </Grid>
+                                            <Grid size={{ xs: 12, md: 6 }}>
+                                                <Typography style={{
+                                                    fontFamily: "Outfit",
+                                                    fontWeight: 400,
+                                                    fontSize: "18px",
+                                                    lineHeight: "31px",
+                                                    color: enabled ? "#202020" : "#999999",
+                                                    margin: "90px 0px 10px 0px"
+                                                }}>
+                                                    Description
+                                                </Typography>
+                                                <TextField
+                                                    fullWidth
+                                                    multiline
+                                                    rows={5}
+                                                    placeholder={enabled ? `Enter ${getFloorName(index)} description` : 'Complete previous floor first'}
+                                                    value={floorDescriptions[index] || ''}
+                                                    onChange={(e) => handleFloorDescriptionChange(index, e.target.value)}
+                                                    disabled={!enabled}
+                                                    sx={{
+                                                        "& .MuiOutlinedInput-root": {
+                                                            borderRadius: "10px",
+                                                            "& fieldset": {
+                                                                border: "1px solid #F4F4F4",
+                                                            },
+                                                            "&:hover fieldset": {
+                                                                border: enabled ? "1px solid #F4F4F4" : "1px solid #E0E0E0",
+                                                            },
+                                                            "&.Mui-focused fieldset": {
+                                                                border: "2px solid #F4F4F4",
+                                                            },
+                                                            "&.Mui-disabled": {
+                                                                backgroundColor: "#F9F9F9",
+                                                                opacity: 0.6,
+                                                            }
+                                                        },
+                                                    }}
                                                 />
-                                            </Box>
-                                        </Grid>
-                                        <Grid size={{ xs: 12, md: 6 }}>
-                                            <Typography style={{
-                                                fontFamily: "Outfit",
-                                                fontWeight: 400,
-                                                fontSize: "18px",
-                                                lineHeight: "31px",
-                                                color: "#202020",
-                                                margin: "90px 0px 10px 0px"
-                                            }}>
-                                                Description
-                                            </Typography>
-                                            <TextField
-                                                fullWidth
-                                                multiline
-                                                rows={5}
-                                                placeholder={`Enter ${getFloorName(index)} description`}
-                                                value={floorDescriptions[index] || ''}
-                                                onChange={(e) => handleFloorDescriptionChange(index, e.target.value)}
-                                                sx={{
-                                                    "& .MuiOutlinedInput-root": {
-                                                        borderRadius: "10px",
-
-                                                        "& fieldset": {
-                                                            border: "1px solid #F4F4F4",
-                                                        },
-                                                        "&:hover fieldset": {
-                                                            border: "1px solid #F4F4F4",
-                                                        },
-                                                        "&.Mui-focused fieldset": {
-                                                            border: "2px solid #F4F4F4",
-                                                        },
-                                                    },
-                                                }}
-                                            />
+                                            </Grid>
                                         </Grid>
                                     </Grid>
-                                </Grid>
-                            ))}
+                                );
+                            })}
                         </Grid>
                     </Box>
                 )}

@@ -32,7 +32,7 @@
         "id": 4,
         "label": "Members",
         "path": "/dashboard/members",
-        "icon": "PhotoSizeSelectActualOutlined"
+        "icon": "PeopleOutlined"
     },
     {
         "id": 5,
@@ -44,18 +44,18 @@
         "id": 6,
         "label": "Brochure",
         "path": "/dashboard/brochure",
-        "icon": "PhotoSizeSelectActualOutlined"
+        "icon": "LibraryBooksOutlined"
     },
     {
         "id": 7,
         "label": "Blog",
         "path": "/dashboard/blog",
-        "icon": "PhotoSizeSelectActualOutlined"
+        "icon": "ArticleOutlined"
     },
     {
         "id": 8,
         "label": "Testimonial",
         "path": "/dashboard/testimonial",
-        "icon": "PhotoSizeSelectActualOutlined"
+        "icon": "StarBorderPurple500Outlined"
     }
 ]
