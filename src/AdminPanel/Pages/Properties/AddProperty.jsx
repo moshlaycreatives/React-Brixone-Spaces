@@ -302,8 +302,6 @@ const AddProperty = () => {
                                 <TextField
                                     fullWidth
                                     placeholder="Enter property name"
-                                    // value={vehicleModel}
-                                    // onChange={(e) => setVehicleModel(e.target.value)}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             borderRadius: "10px",
@@ -335,8 +333,6 @@ const AddProperty = () => {
                                 <TextField
                                     fullWidth
                                     placeholder="Enter price"
-                                    // value={vehicleModel}
-                                    // onChange={(e) => setVehicleModel(e.target.value)}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             borderRadius: "10px",
@@ -382,8 +378,6 @@ const AddProperty = () => {
                                 }}>
                                     <Select
                                         displayEmpty
-                                    // value={paymentMethod}
-                                    // onChange={(e) => setPaymentMethod(e.target.value)}
                                     >
                                         <MenuItem >
                                             Select bedrooms
@@ -428,15 +422,12 @@ const AddProperty = () => {
                                 }}>
                                     <Select
                                         displayEmpty
-                                    // value={paymentMethod}
-                                    // onChange={(e) => setPaymentMethod(e.target.value)}
                                     >
                                         <MenuItem >
                                             Select bathrooms
                                         </MenuItem>
                                     </Select>
                                 </FormControl>
-
                             </Grid>
                             <Grid size={{ xs: 12, md: 4 }}>
                                 <Typography style={{
@@ -452,8 +443,6 @@ const AddProperty = () => {
                                 <TextField
                                     fullWidth
                                     placeholder="Enter area (sqft)"
-                                    // value={vehicleModel}
-                                    // onChange={(e) => setVehicleModel(e.target.value)}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             borderRadius: "10px",
@@ -499,8 +488,6 @@ const AddProperty = () => {
                                 }}>
                                     <Select
                                         displayEmpty
-                                    // value={paymentMethod}
-                                    // onChange={(e) => setPaymentMethod(e.target.value)}
                                     >
                                         <MenuItem >
                                             Select availability
@@ -544,8 +531,6 @@ const AddProperty = () => {
                                 }}>
                                     <Select
                                         displayEmpty
-                                    // value={paymentMethod}
-                                    // onChange={(e) => setPaymentMethod(e.target.value)}
                                     >
                                         <MenuItem >
                                             Select kitchens
@@ -582,8 +567,7 @@ const AddProperty = () => {
                                 }}>
                                     <Select
                                         displayEmpty
-                                    // value={paymentMethod}
-                                    // onChange={(e) => setPaymentMethod(e.target.value)}
+                                  
                                     >
                                         <MenuItem >
                                             Select store rooms
@@ -605,8 +589,6 @@ const AddProperty = () => {
                                 <TextField
                                     fullWidth
                                     placeholder="Enter Location"
-                                    // value={vehicleModel}
-                                    // onChange={(e) => setVehicleModel(e.target.value)}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             borderRadius: "10px",
@@ -660,15 +642,12 @@ const AddProperty = () => {
                                 }}>
                                     <Select
                                         displayEmpty
-                                    // value={paymentMethod}
-                                    // onChange={(e) => setPaymentMethod(e.target.value)}
                                     >
                                         <MenuItem >
                                             Select Status
                                         </MenuItem>
                                     </Select>
                                 </FormControl>
-
                             </Grid>
                             <Grid size={{ xs: 12, md: 4 }}>
                                 <Typography style={{
@@ -698,8 +677,6 @@ const AddProperty = () => {
                                 }}>
                                     <Select
                                         displayEmpty
-                                    // value={paymentMethod}
-                                    // onChange={(e) => setPaymentMethod(e.target.value)}
                                     >
                                         <MenuItem >
                                             Select lease type
@@ -1081,8 +1058,6 @@ const AddProperty = () => {
                         </Grid>
                     </Box>
                 )}
-
-
 
                 {/* Property Video */}
 

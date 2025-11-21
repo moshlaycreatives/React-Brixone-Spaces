@@ -5,6 +5,7 @@ import BedOutlinedIcon from '@mui/icons-material/BedOutlined';
 import { endpoints } from "../../endpoint";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Location from "./Loaction";
 
 
 
@@ -702,6 +703,7 @@ const PropertyDetail = () => {
 
 
             </Box >
+
 
         </>
     )
